@@ -1,0 +1,43 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Russo One';
+}
+
+body{
+	background-color: white;
+}
+
+header{
+	background-color: #AFAFAF;
+}
+
+/*Gestion principale des nav*/
+.nav_principal {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 10em;
+}
+
+/*Nav pour la connexion*/
+.nav_connexion ul{
+	padding-top: 1em;
+	padding-right: 1em;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.nav_connexion li img{
+	height: 2em;
+	vertical-align: middle;
+}
+
+/*Nav pour le logo, le titre et les différentes pages*/
+nav .nav_right li{
+	margin-right: 2em;
+	text-align: center;
+}
