@@ -9,11 +9,25 @@
     </head>
     
     <body>
+    	<?php
+            session_start();
+            //On récupère les infos
+            $login = $_POST['login'];
+            $mdp = $_POST['mdp'];
+
+            if(!isset($login) and !isset($mdp)){
+            	//html a mettre ici
+            }else{
+            	header('Location: login.php');
+            }
+            
+        ?>
+
     	<!-- Menu en tête de page -->
         <header>
         	<nav class="nav_connexion">
     			<ul>
-    				<li><img src="image/logo_connexion.png" alt="Connexion logo"> <a href="connexion.php"> Se connecter </a></li>
+    				<li><img src="image/logo_connexion.png" alt="Connexion logo"> <a href="login.html"> Se connecter </a></li>
     			</ul>
 	   		</nav>
 
