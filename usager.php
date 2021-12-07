@@ -1,37 +1,4 @@
 <!DOCTYPE html>
-<?php
-
-	
-	///Connexion au serveur MySQL
-    try { 
-        $linkpdo = new PDO("mysql:host=localhost;dbname=contact", 'root'); 
-    } 
-     
-    ///Verification de la connexion 
-    if (mysqli_connect_errno()) { 
-        print("Connect failed: \n" . mysqli_connect_error()); 
-        exit(); 
-    }
-	
-	$Nom  = $_POST['nom'];
-	$Prenom = $_POST['prenom'];
-	$Adresse = $_POST['adresse'];
-	$CodeP = $_POST['cp'];
-	$Ville=$_POST['ville'];
-	$Datenaiss=$_POST['datenaiss'];
-	$lieunaiss=$_POST['lieunaiss'];
-	$Secu=$_POST['secu'];
-	
-	
-	
-	$req = $linkpdo->prepare('INSERT INTO patient(Nom, Prenom, Adresse, CodePostal, Ville, DateNaissance, LieuNaissance, NumeroSecuriteSociale)
-							VALUES(:Nom, :Prenom, :Adresse, :CodePostal, :Ville, :DateNaissance, :LieuNaissance, :NumeroSecuriteSociale)');
-	$req->execute(array(':Nom' => $Nom, ':Prenom' => $Prenom, ':Adresse' => $Adresse,':CodePostal' => $CodeP, ':Ville' => $Ville, ':DateNaissance' => $Datenaiss, ':LieuNaissance' => $lieunaiss, ':NumeroSecuriteSociale' => $Secu));
-	
-	
-	
-	
-?>
 <html>
     <head>
         <!-- En-tête de la page -->
@@ -85,7 +52,39 @@
 			</form>
         </section>
 
+		<?php
 
+	
+	///Connexion au serveur MySQL
+    try { 
+        $linkpdo = new PDO("mysql:host=localhost;dbname=contact", 'root'); 
+    } 
+     
+    ///Verification de la connexion 
+    if (mysqli_connect_errno()) { 
+        print("Connect failed: \n" . mysqli_connect_error()); 
+        exit(); 
+    }
+	
+	$Nom  = $_POST['nom'];
+	$Prenom = $_POST['prenom'];
+	$Adresse = $_POST['adresse'];
+	$CodeP = $_POST['cp'];
+	$Ville=$_POST['ville'];
+	$Datenaiss=$_POST['datenaiss'];
+	$lieunaiss=$_POST['lieunaiss'];
+	$Secu=$_POST['secu'];
+	
+	
+	
+	$req = $linkpdo->prepare('INSERT INTO patient(Nom, Prenom, Adresse, CodePostal, Ville, DateNaissance, LieuNaissance, NumeroSecuriteSociale)
+							VALUES(:Nom, :Prenom, :Adresse, :CodePostal, :Ville, :DateNaissance, :LieuNaissance, :NumeroSecuriteSociale)');
+	$req->execute(array(':Nom' => $Nom, ':Prenom' => $Prenom, ':Adresse' => $Adresse,':CodePostal' => $CodeP, ':Ville' => $Ville, ':DateNaissance' => $Datenaiss, ':LieuNaissance' => $lieunaiss, ':NumeroSecuriteSociale' => $Secu));
+	
+	
+	
+	
+?>
 
 
         <!-- Pied de la page -->
