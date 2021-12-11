@@ -12,6 +12,8 @@ body{
 
 header{
 	background-color: #AFAFAF;
+	min-height: 100px;
+	max-height: 200px;
 }
 
 /*Gestion principale des nav*/
@@ -25,8 +27,8 @@ header{
 
 /*Nav pour la connexion*/
 .nav_connexion ul{
-	padding-top: 1em;
-	padding-right: 1em;
+	padding-top: 10px;
+	padding-right: 10px;
 	display: flex;
 	flex-direction: row-reverse;
 }
@@ -37,7 +39,7 @@ header{
 }
 
 /*Nav pour le logo, le titre et les différentes pages*/
-nav .nav_right li{
+.nav_right li{
 	margin-right: 2em;
 	text-align: center;
 }
