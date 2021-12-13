@@ -14,8 +14,10 @@
 	
 		///Connexion au serveur MySQL
 		try { 
-			$linkpdo = new PDO("mysql:host=localhost;dbname=contact", 'root'); 
-		} 
+			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
+		}catch (PDOException $e){
+			die('Erreur : ' . $e->getMessage());
+		}
      
 		///Verification de la connexion 
 		if (mysqli_connect_errno()) { 
@@ -41,31 +43,25 @@
 	?>
 	
         <!-- Menu en tête de page -->
-        <header>
-            <nav>
-                <div class="nav_logo">
-                    <a href="index.html" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
-                </div>
-                <div class="nav_link">
-
-                <div class="nav_middle">
-                    <h2>Bonjour à nos patients</h2>
-                </div>
-                
-                <div class="nav_right">
-                    <ul>
-                        <li><a href="index.html"> Acceuil </a></li> 
-                        <li><a href="usager.php"> Usager </a></li> 
-                        <li><a href="medecin.html"> Medecin </a></li>
-                        <li><a href="consultation.html"> Consultation </a></li>
-                        <li><a href="statistique.html"> Statistique </a></li>
-                        <div class="connexion">
-                            <li><a href="login.html"> Se connecter </a></li>
-                        </div>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+    	<header>
+    		<nav>
+	    		<div class="nav_logo">
+	    			<a href="index.html" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
+	    		</div>
+	    		<div class="nav_link">
+	    			<ul>
+	    				<li><a href="index.html"> Acceuil </a></li> 
+	    				<li><a href="usager.php"> Usager </a></li> 
+	    				<li><a href="medecin.html"> Medecin </a></li>
+	    				<li><a href="consultation.html"> Consultation </a></li>
+	    				<li><a href="statistique.html"> Statistique </a></li>
+	    				<div class="connexion">
+	    					<li><a href="login.html"> Se connecter </a></li>
+	    				</div>
+	    			</ul>
+	    		</div>
+	    	</nav>
+    	</header>
 
         <!-- Corps de la page -->
         <section>
