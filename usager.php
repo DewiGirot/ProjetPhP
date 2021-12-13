@@ -9,11 +9,58 @@
     </head>
     
     <body>
-	<?php
+		
+        <!-- Menu en tête de page -->
+    	<header>
+    		<nav>
+	    		<div class="nav_logo">
+	    			<a href="index.php" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
+	    		</div>
+	    		<div class="nav_link">
+	    			<ul>
+	    				<li><a href="index.php"> Acceuil </a></li> 
+	    				<li><a href="usager.php"> Usager </a></li> 
+	    				<li><a href="medecin.php"> Medecin </a></li>
+	    				<li><a href="consultation.php"> Consultation </a></li>
+	    				<li><a href="statistique.php"> Statistique </a></li>
+	    				<div class="connexion">
+	    					<li><a href="login.php"> Se connecter </a></li>
+	    				</div>
+	    			</ul>
+	    		</div>
+	    	</nav>
+    	</header>
 
+        <!-- Corps de la page -->
+        <section>
+            <form action="usager.php" method="post">
+				<p>Civilité :<input type="text" name="usager" id='civilite' /></p>
+				<p>Nom : <input type="text" name="usager" id='nom'/></p>
+				<p>Prenom :<input type="text" name="usager" id='prenom'/></p>
+				<p>Adresse : <input type="text" name="usager" id='adresse'/></p>
+				<p>Code Postal :<input type="text" name="usager" id='cp'/></p>
+				<p>Ville de résidence :<input type="text" name="usager" id='ville'/></p>
+				<p>Date de naissance :<input type="text" name="usager" id='datenaiss'/></p>
+				<p>Lieu de naissance :<input type="text" name="usager" id='lieunaiss'/></p>
+				<p>N° de sécurité sociale :<input type="text" name="usager" id='secu'/></p>
+				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
+			</form>
+        </section>
+		
+		<?php
+		
+		$Civilite = $_POST['civilite'];
+		$nom = $_POST['nom'];
+		$prenom = $_POST["prenom"];
+		$adresse = $_POST["adresse"];
+		$codePostal = $_POST["cp"];
+		$ville = $_POST["ville"];
+		$dateN = $_POST["datenaiss"];
+		$lieuN = $_POST["lieunaiss"];
+		$numsecu = $_POST["secu"]; 
 	
 		///Connexion au serveur MySQL
-		try { 
+		try {
 			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
 		}catch (PDOException $e){
 			die('Erreur : ' . $e->getMessage());
@@ -25,60 +72,20 @@
 			exit(); 
 		}
 	
-		$Nom  = $_POST['nom'];
-		$Prenom = $_POST['prenom'];
-		$Adresse = $_POST['adresse'];
-		$CodeP = $_POST['cp'];
-		$Ville=$_POST['ville'];
-		$Datenaiss=$_POST['datenaiss'];
-		$lieunaiss=$_POST['lieunaiss'];
-		$Secu=$_POST['secu'];
-			
-	
-	
-		$req = $linkpdo->prepare('INSERT INTO patient(Nom, Prenom, Adresse, CodePostal, Ville, DateNaissance, LieuNaissance, NumeroSecuriteSociale)
-							VALUES(:Nom, :Prenom, :Adresse, :CodePostal, :Ville, :DateNaissance, :LieuNaissance, :NumeroSecuriteSociale)');
-		$req->execute(array(':Nom' => $Nom, ':Prenom' => $Prenom, ':Adresse' => $Adresse,':CodePostal' => $CodeP, ':Ville' => $Ville, ':DateNaissance' => $Datenaiss, ':LieuNaissance' => $lieunaiss, ':NumeroSecuriteSociale' => $Secu));
-	
+        $req = $linkpdo->prepare('INSERT INTO contact(Civilite, Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
+                                    VALUES (:Civilite, :Nom, :Prenom, :Adresse, :CodePostal, :Ville, :DateNaissance, :LieuNaissance, :Numero)');
+
+        $req->execute(array('Civilite' => $Civilite,
+							'Nom' => $nom,
+                            'Prenom' => $prenom,
+                            'Adresse' => $adresse,
+                            'CodePostal' => $ville,
+                            'Ville' => $adresse,
+							'DateNaissance' => $dateN,
+							'LieuNaissance' => $lieuN,
+							'Numero' => $numsecu));
 	?>
-	
-        <!-- Menu en tête de page -->
-    	<header>
-    		<nav>
-	    		<div class="nav_logo">
-	    			<a href="index.html" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
-	    		</div>
-	    		<div class="nav_link">
-	    			<ul>
-	    				<li><a href="index.html"> Acceuil </a></li> 
-	    				<li><a href="usager.php"> Usager </a></li> 
-	    				<li><a href="medecin.html"> Medecin </a></li>
-	    				<li><a href="consultation.html"> Consultation </a></li>
-	    				<li><a href="statistique.html"> Statistique </a></li>
-	    				<div class="connexion">
-	    					<li><a href="login.html"> Se connecter </a></li>
-	    				</div>
-	    			</ul>
-	    		</div>
-	    	</nav>
-    	</header>
-
-        <!-- Corps de la page -->
-        <section>
-            <form action="usager.html" method="post">
-				<p>Nom : <input type="text" name="nom" /></p>
-				<p>Prenom : <input type="text" name="prenom" /></p>
-				<p>Adresse : <input type="text" name="adresse" /></p>
-				<p>Code Postal : <input type="text" name="cp" /></p>
-				<p>Ville de résidence : <input type="text" name="ville" /></p>
-				<p>Date de naissance : <input type="text" name="datenaiss" /></p>
-				<p>Lieu de naissance : <input type="text" name="lieunaiss" /></p>
-				<p>N° de sécurité sociale : <input type="text" name="secu" /></p>
-				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
-			</form>
-        </section>
-
-
+		
         <!-- Pied de la page -->
         <footer>
             <h4>8 Pl. Vincent Auriol, 31860 Labarthe-sur-Lèze</h4>
