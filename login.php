@@ -6,7 +6,7 @@
         <title>Connexion</title>
     </head>
     <body>
-        <form action="check.php" method="post">
+        <form action="login.php" method="post">
              <p>Votre identifiant :         <input type="text" name="login" /></p>
              <p>Votre mot de passe :        <input type="text" name="mdp" /></p>
              <p><input type="reset" name "reset"/> 
@@ -14,34 +14,32 @@
         </form>
 
         <?php
-            //On créée la session pour se souvenir de la personne
-            session_start();
-
             //On récupère les informations
             $login = $_POST['login'];
             $mdp = $_POST['mdp'];
+            $login_valide = "root";
+            $mdp_valide = "iutinfo";
 
-            $_SESSION['login'] = $login;
 
-            // On vérifier si les varaibles existent
-            if(isset($login) AND isset($mdp)){ 
-                
-                if($login != NULL AND $mdp != NULL){ 
-                
-                    if ($login == 'root'){
-                        if($mdp == '$iutinfo'){
-                            header('Location: index.html');
-                            exit();
-                        }
-                    }else{
-                        echo 'Connexion établie';
-                        sleep(3);
-                        header("Refresh:0");            
-                    }   
+            // on teste si nos variables sont définies
+            if (isset($_POST['login']) && isset($_POST['mdp'])) {
 
-                } else{ // Si les champs n'ont pas étaient renseigné, on affiche un message d'erreur ...
-                    echo 'Veuillez renseigner tous les champs.';
+                // on vérifie les informations du formulaire, à savoir si le pseudo saisi est bien un pseudo autorisé, de même pour le mot de passe
+                if ( $login_valide == $_POST['login']  && $mdp_valide == $_POST['mdp']) {
+
+                    // on la démarre et onenregistre les paramètres de notre visiteur comme variables de session ($login et $mdp) 
+                    session_start ();
+                    $_SESSION['login'] = $_POST['login'];
+                    $_SESSION['mdp'] = $_POST['mdp'];
+
+                    // on redirige notre visiteur vers une page de notre section membre
+                    header ('location: index.php');
+                }else {
+                    echo 'Membre non reconnu...';
+                    echo '<meta http-equiv="refresh" content="0;URL=login.php">';
                 }
+            }else {
+                echo 'Les variables du formulaire ne sont pas déclarées.';
             }
         ?>
     </body>

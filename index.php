@@ -1,3 +1,9 @@
+<?php
+    if (isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
+    	header('Location: login.php');
+    }
+    
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,35 +16,22 @@
     </head>
     
     <body>
-    	<?php
-            session_start();
-            //On récupère les infos
-            $login = $_POST['login'];
-            $mdp = $_POST['mdp'];
-
-            if(!isset($login) and !isset($mdp)){
-            	//html a mettre ici
-            }else{
-            	header('Location: login.php');
-            }
-            
-        ?>
 
     	<!-- Menu en tête de page -->
     	<header>
     		<nav>
 	    		<div class="nav_logo">
-	    			<a href="index.html" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
+	    			<a href="index.php" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
 	    		</div>
 	    		<div class="nav_link">
 	    			<ul>
-	    				<li><a href="index.html"> Acceuil </a></li> 
+	    				<li><a href="index.php"> Acceuil </a></li> 
 	    				<li><a href="usager.php"> Usager </a></li> 
-	    				<li><a href="medecin.html"> Medecin </a></li>
-	    				<li><a href="consultation.html"> Consultation </a></li>
-	    				<li><a href="statistique.html"> Statistique </a></li>
+	    				<li><a href="medecin.php"> Medecin </a></li>
+	    				<li><a href="consultation.php"> Consultation </a></li>
+	    				<li><a href="statistique.php"> Statistique </a></li>
 	    				<div class="connexion">
-	    					<li><a href="login.html"> Se connecter </a></li>
+	    					<li><a href="login.php"> Se connecter </a></li>
 	    				</div>
 	    			</ul>
 	    		</div>
