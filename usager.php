@@ -42,31 +42,21 @@
         <!-- Corps de la page -->
         <section>
             <form action="usager.php" method="post">
-				<p>Civilité :<input type="text" name="usager" id='civilite' /></p>
-				<p>Nom : <input type="text" name="usager" id='nom'/></p>
-				<p>Prenom :<input type="text" name="usager" id='prenom'/></p>
-				<p>Adresse : <input type="text" name="usager" id='adresse'/></p>
-				<p>Code Postal :<input type="text" name="usager" id='cp'/></p>
-				<p>Ville de résidence :<input type="text" name="usager" id='ville'/></p>
-				<p>Date de naissance :<input type="text" name="usager" id='datenaiss'/></p>
-				<p>Lieu de naissance :<input type="text" name="usager" id='lieunaiss'/></p>
-				<p>N° de sécurité sociale :<input type="text" name="usager" id='secu'/></p>
+				<p>Civilité :<input type="text" name="civilite"/></p>
+				<p>Nom : <input type="text" name="nom" /></p>
+				<p>Prenom :<input type="text" name="prenom" p>
+				<p>Adresse : <input type="text" name="adresse" /></p>
+				<p>Code Postal :<input type="text" name="cp" /></p>
+				<p>Ville de résidence :<input type="text" name="ville" /></p>
+				<p>Date de naissance :<input type="text" name="datenaiss" /></p>
+				<p>Lieu de naissance :<input type="text" name="lieunaiss" /></p>
+				<p>N° de sécurité sociale :<input type="text" name="secu" /></p>
 				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
 			</form>
         </section>
 		
 		<?php
 		
-		$Civilite = $_POST['civilite'];
-		$nom = $_POST['nom'];
-		$prenom = $_POST["prenom"];
-		$adresse = $_POST["adresse"];
-		$codePostal = $_POST["cp"];
-		$ville = $_POST["ville"];
-		$dateN = $_POST["datenaiss"];
-		$lieuN = $_POST["lieunaiss"];
-		$numsecu = $_POST["secu"]; 
-	
 		///Connexion au serveur MySQL
 		try {
 			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
@@ -80,18 +70,21 @@
 			exit(); 
 		}
 	
-        $req = $linkpdo->prepare('INSERT INTO contact(Civilite, Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
-                                    VALUES (:Civilite, :Nom, :Prenom, :Adresse, :CodePostal, :Ville, :DateNaissance, :LieuNaissance, :Numero)');
-
-        $req->execute(array('Civilite' => $Civilite,
-							'Nom' => $nom,
-                            'Prenom' => $prenom,
-                            'Adresse' => $adresse,
-                            'CodePostal' => $ville,
-                            'Ville' => $adresse,
-							'DateNaissance' => $dateN,
-							'LieuNaissance' => $lieuN,
-							'Numero' => $numsecu));
+        $req = $linkpdo->prepare('INSERT INTO patient(Civilite, Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
+                                    VALUES (:civilite, :nom, :prenom, :adresse, :cp, :ville, :datenaiss, :lieunaiss, :secu)');
+		
+		$req -> bindParam(':civilite', $_POST['civilite']);
+		$req -> bindParam(':nom', $_POST['nom']);
+		$req -> bindParam(':prenom', $_POST['prenom']);
+		$req -> bindParam(':adresse', $_POST['adresse']);
+		$req -> bindParam(':cp', $_POST['cp']);
+		$req -> bindParam(':ville', $_POST['ville']);
+		$req -> bindParam(':datenaiss', $_POST['datenaiss']);
+		$req -> bindParam(':lieunaiss', $_POST['lieunaiss']);
+		$req -> bindParam(':secu', $_POST['secu']);
+		
+        $req->execute();
+		
 	?>
 		
         <!-- Pied de la page -->
