@@ -40,6 +40,44 @@
 
         <!-- Corps de la page -->
         <section>
+        Ajouter un médecin
+
+            <form action="medecin.php" method="post">
+				<p>Civilité :<input type="text" name="civilite"/></p>
+				<p>Nom : <input type="text" name="nom" /></p>
+				<p>Prenom :<input type="text" name="prenom" p>
+				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
+			</form>
+        </section>
+
+        <?php
+		
+		///Connexion au serveur MySQL
+		try {
+			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
+		}catch (PDOException $e){
+			die('Erreur : ' . $e->getMessage());
+		}
+     
+		///Verification de la connexion 
+		if (mysqli_connect_errno()) { 
+			print("Connect failed: \n" . mysqli_connect_error()); 
+			exit(); 
+		}
+	
+        $req = $linkpdo->prepare('INSERT INTO medecin(Civilite, Nom,Prenom)
+                                    VALUES (:civilite, :nom, :prenom)');
+		
+		$req -> bindParam(':civilite', $_POST['civilite']);
+		$req -> bindParam(':nom', $_POST['nom']);
+		$req -> bindParam(':prenom', $_POST['prenom']);
+		
+        $req->execute();
+		
+	?>
+
+
+        <section>
             <table>
                 <thead>
                     <tr>
@@ -78,6 +116,9 @@
             </table>
         </section>
 		<section>
+
+        
+        
 			<?php
 			
 			
