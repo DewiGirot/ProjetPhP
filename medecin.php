@@ -131,25 +131,21 @@
                <th>Civilité</th>
     	       <th>Nom</th>
     	       <th>Prénom</th>	
+               <th> Actions </th>
     		</tr>
-    </table>
-</body>
-
-        
-        
-			<?php
+            <?php
             $keyword = $_POST['keyword'];
 
 			$res = $linkpdo->query('SELECT * FROM medecin');
             while($data = $res->fetch()){
                 if (in_array($keyword, $data, true)){
                     echo "<tr>";
-                    echo "<td>" . $data['Civilite'] . "<td>";
-                    echo "<td>" . $data['Nom'] . "<td>";
-                    echo "<td>" . $data['Prenom'] . "<td>";
+                    echo "<td>" . $data['Civilite'] . "</td>";
+                    echo "<td>" . $data['Nom'] . "</td>";
+                    echo "<td>" . $data['Prenom'] . "</td>";
         
-                    echo "<td><a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Modify</a></td>";
-                    echo "<td><a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Delete</a></td>";
+                    echo "<td><a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
+                    echo "<a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
                     echo "</tr>";
                 }
             }
@@ -157,6 +153,11 @@
 			
 			
 			?>
+    </table>
+</body>
+
+        
+        
 			
 		</section>
 
