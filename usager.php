@@ -136,7 +136,7 @@
 			echo "<td>" . $data['Nom'] . "</td>";
 
 			echo "<td><a href='usager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
-			echo "<a href='supprimer.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
+			echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
 			echo "</tr>";
 		}
 	}

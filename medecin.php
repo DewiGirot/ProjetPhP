@@ -136,7 +136,7 @@
 
             <?php
             $keyword = $_POST['keyword'];
-            
+
 
 			$res = $linkpdo->query('SELECT * FROM medecin');
             while($data = $res->fetch()){
@@ -147,7 +147,7 @@
                     echo "<td>" . $data['Prenom'] . "</td>";
         
                     echo "<td><a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
-                    echo "<a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
+                    echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
                     echo "</tr>";
                 }
             }
