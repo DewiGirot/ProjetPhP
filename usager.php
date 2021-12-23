@@ -3,6 +3,7 @@
     if (!isset($_SESSION['login'])) {
     	header('Location: login.php');
     }
+	$keyword="";
     
 ?>
 
@@ -70,7 +71,8 @@
 			exit(); 
 		}
 	
-        $req = $linkpdo->prepare('INSERT INTO patient(Civilite, Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
+		//Insertion du nouveau patient
+        $req = $linkpdo->prepare('INSERT INTO patient(CiviliteP, NomP,PrenomP,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
                                     VALUES (:civilite, :nom, :prenom, :adresse, :cp, :ville, :datenaiss, :lieunaiss, :secu)');
 		
 		$req -> bindParam(':civilite', $_POST['civilite']);
@@ -86,15 +88,15 @@
         $req->execute();
 		
 	?>
+<section>
+	<form method="post" action="usager.php">
 
-<form method="post" action="usager.php">
-
-<label for="keyword">Chercher un patient : </label><br/>
-<input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
-<input type="reset" value="Reset"/>
-<input type="submit" value="Submit"/>
-</form>
-<br />
+	<label for="keyword">Chercher un patient : </label><br/>
+	<input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
+	<input type="reset" value="Reset"/>
+	<input type="submit" value="Submit"/>
+	</form>
+	<br />
 <table>
 <thead></thead>
 	<tr>
@@ -117,6 +119,8 @@
 	
 
 	$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
+
+	//Affichage des patients en fonction du mot clé
 	while($data = $res->fetch()){
 		if (in_array($keyword, $data, true)){
 			echo "<tr>";
@@ -132,7 +136,7 @@
 			echo "<td>" . $data['Nom'] . "</td>";
 
 			echo "<td><a href='usager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
-			echo "<a href='usager.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
+			echo "<a href='supprimer.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
 			echo "</tr>";
 		}
 	}
@@ -141,6 +145,7 @@
 	
 	?>
 </table>
+</section>
 		
         <!-- Pied de la page -->
         <footer>

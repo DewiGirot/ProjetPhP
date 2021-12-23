@@ -133,8 +133,10 @@
     	       <th>Prénom</th>	
                <th> Actions </th>
     		</tr>
+
             <?php
             $keyword = $_POST['keyword'];
+            
 
 			$res = $linkpdo->query('SELECT * FROM medecin');
             while($data = $res->fetch()){
