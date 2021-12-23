@@ -125,6 +125,8 @@
         <input type="submit" value="Submit"/>
     </form>
     <br />
+
+    //Tableau d'affichage des médecins
     <table>
     <thead></thead>
     		<tr>

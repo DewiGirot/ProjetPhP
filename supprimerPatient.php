@@ -12,7 +12,7 @@ if (mysqli_connect_errno()) {
     exit(); 
 }
 
-
+// Supprimer le patient avec l'id récupéré
 $req = $linkpdo->prepare('DELETE FROM patient 
                                     WHERE Id_Patient = :id');
 

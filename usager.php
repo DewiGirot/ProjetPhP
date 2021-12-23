@@ -89,6 +89,8 @@
 		
 	?>
 <section>
+
+		//Entrée du mot clé
 	<form method="post" action="usager.php">
 
 	<label for="keyword">Chercher un patient : </label><br/>
@@ -97,6 +99,8 @@
 	<input type="submit" value="Submit"/>
 	</form>
 	<br />
+
+//Tableau qui affiche le résultat de la recherche
 <table>
 <thead></thead>
 	<tr>
