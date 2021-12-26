@@ -27,7 +27,7 @@
 	    		</div>
 	    		<div class="nav_link">
 	    			<ul>
-	    				<li><a href="index.php"> Acceuil </a></li> 
+	    				<li><a href="index.php"> Accueil </a></li> 
 	    				<li><a href="usager.php"> Usager </a></li> 
 	    				<li><a href="medecin.php"> Medecin </a></li>
 	    				<li><a href="consultation.php"> Consultation </a></li>
@@ -90,65 +90,71 @@
 	?>
 <section>
 
-		//Entrée du mot clé
+
 	<form method="post" action="usager.php">
 
 	<label for="keyword">Chercher un patient : </label><br/>
 	<input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
 	<input type="reset" value="Reset"/>
-	<input type="submit" value="Submit"/>
+	<input type="submit" name="chercher" value="Submit"/>
 	</form>
 	<br />
 
-//Tableau qui affiche le résultat de la recherche
-<table>
-<thead></thead>
-	<tr>
-	   <th>Civilité</th>
-	   <th>Nom</th>
-	   <th>Prénom</th>
-	   <th>Adresse</th>	
-	   <th>Code Postal</th>	
-	   <th>Ville</th>	
-	   <th>Date de naissance</th>		
-	   <th>Lieu de naissance</th>	
-	   <th>Sécurité Sociale</th>
-	   <th>Médecin référrent</th>		
-	   <th> Actions </th>
-	</tr>
 
 	<?php
 
-	$keyword = $_POST['keyword'];
+	if (isset($_POST['chercher'])){
+
+		//Tableau qui affiche le résultat de la recherche
+		echo "<table>
+		<thead>
+			<tr>
+			   <th>Civilité</th>
+			   <th>Nom</th>
+			   <th>Prénom</th>
+			   <th>Adresse</th>	
+			   <th>Code Postal</th>	
+			   <th>Ville</th>	
+			   <th>Date de naissance</th>		
+			   <th>Lieu de naissance</th>	
+			   <th>Sécurité Sociale</th>
+			   <th>Médecin référrent</th>		
+			   <th> Actions </th>
+			</tr>
+			</thead>";
+
+		$keyword = $_POST['keyword'];
 	
 
-	$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
+		$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
 
-	//Affichage des patients en fonction du mot clé
-	while($data = $res->fetch()){
-		if (in_array($keyword, $data, true)){
-			echo "<tr>";
-			echo "<td>" . $data['CiviliteP'] . "</td>";
-			echo "<td>" . $data['NomP'] . "</td>";
-			echo "<td>" . $data['PrenomP'] . "</td>";
-			echo "<td>" . $data['Adresse'] . "</td>";
-			echo "<td>" . $data['CodePostal'] . "</td>";
-			echo "<td>" . $data['Ville'] . "</td>";
-			echo "<td>" . $data['DateNaissance'] . "</td>";
-			echo "<td>" . $data['LieuNaissance'] . "</td>";
-			echo "<td>" . $data['Numero'] . "</td>";
-			echo "<td>" . $data['Nom'] . "</td>";
+		//Affichage des patients en fonction du mot clé
+		while($data = $res->fetch()){
+			if (in_array($keyword, $data, true)){
+				echo "<tr>";
+				echo "<td>" . $data['CiviliteP'] . "</td>";
+				echo "<td>" . $data['NomP'] . "</td>";
+				echo "<td>" . $data['PrenomP'] . "</td>";
+				echo "<td>" . $data['Adresse'] . "</td>";
+				echo "<td>" . $data['CodePostal'] . "</td>";
+				echo "<td>" . $data['Ville'] . "</td>";
+				echo "<td>" . $data['DateNaissance'] . "</td>";
+				echo "<td>" . $data['LieuNaissance'] . "</td>";
+				echo "<td>" . $data['Numero'] . "</td>";
+				echo "<td>" . $data['Nom'] . "</td>";
 
-			echo "<td><a href='usager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
-			echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
-			echo "</tr>";
+				echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
+				echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
+				echo "</tr>";
+			}
 		}
+		$res->closeCursor();
+
+		echo "</table>";
+
 	}
-	$res->closeCursor();
-	
-	
 	?>
-</table>
+
 </section>
 		
         <!-- Pied de la page -->

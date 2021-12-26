@@ -25,7 +25,7 @@
                 </div>
                 <div class="nav_link">
                     <ul>
-                        <li><a href="index.php"> Acceuil </a></li> 
+                        <li><a href="index.php"> Accueil </a></li> 
                         <li><a href="usager.php"> Usager </a></li> 
                         <li><a href="medecin.php"> Medecin </a></li>
                         <li><a href="consultation.php"> Consultation </a></li>
@@ -77,87 +77,57 @@
 	?>
 
 
-        <section>
-            <table>
-                <thead>
-                    <tr>
-                        <th>N°</th>
-                        <th>Civilité</th>
-                        <th>Nom du médecin</th>
-                        <th>Prénom</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <TR>
-                        <TD>1</TD>
-                        <TD>Monsieur</TD>
-                        <TD>PIERRE</TD>
-                        <TD>Jean-phil</TD>
-                    </TR>
-                    <TR>
-                        <TD>2</TD>
-                        <TD>Madame</TD>
-                        <TD>VIALLET</TD>
-                        <TD>Jacquelinne</TD>
-                    </TR>
-                    <TR>
-                        <TD>3</TD>
-                        <TD>Madame</TD>
-                        <TD>NOTIN</TD>
-                        <TD>Sandrine</TD>
-                    </TR>
-                    <TR>
-                        <TD>4</TD>
-                        <TD>Monsieur</TD>
-                        <TD>CHEVALIER</TD>
-                        <TD>Hervé</TD>
-                    </TR>
-                </tbody>
-            </table>
-        </section>
-		<section>
-        <body>
+<section>
+<body>
     <form method="post" action="medecin.php">
 
         <label for="keyword">Chercher un médecin : </label><br/>
         <input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
         <input type="reset" value="Reset"/>
-        <input type="submit" value="Submit"/>
+        <input type="submit" name="chercher" value="Submit"/>
     </form>
     <br />
 
-    //Tableau d'affichage des médecins
-    <table>
-    <thead></thead>
-    		<tr>
-               <th>Civilité</th>
-    	       <th>Nom</th>
-    	       <th>Prénom</th>	
-               <th> Actions </th>
-    		</tr>
+    
 
             <?php
-            $keyword = $_POST['keyword'];
+            if (isset($_POST['chercher'])){
+                echo "
+                <table>
+                <thead>
+                        <tr>
+                           <th>Civilité</th>
+                           <th>Nom</th>
+                           <th>Prénom</th>	
+                           <th> Actions </th>
+                        </tr>
+                        </thead>";
+
+                $keyword = $_POST['keyword'];
 
 
-			$res = $linkpdo->query('SELECT * FROM medecin');
-            while($data = $res->fetch()){
-                if (in_array($keyword, $data, true)){
-                    echo "<tr>";
-                    echo "<td>" . $data['Civilite'] . "</td>";
-                    echo "<td>" . $data['Nom'] . "</td>";
-                    echo "<td>" . $data['Prenom'] . "</td>";
-        
-                    echo "<td><a href='medecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
-                    echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
-                    echo "</tr>";
+                $res = $linkpdo->query('SELECT * FROM medecin');
+                while($data = $res->fetch()){
+                    if (in_array($keyword, $data, true)){
+                        echo "<tr>";
+                        echo "<td>" . $data['Civilite'] . "</td>";
+                        echo "<td>" . $data['Nom'] . "</td>";
+                        echo "<td>" . $data['Prenom'] . "</td>";
+            
+                        echo "<td><a href='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
+                        echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
+                        echo "</tr>";
+                    }
                 }
+                $res->closeCursor();
+
             }
-            $res->closeCursor();
+
+            echo "</table>";
 			
 			
 			?>
-    </table>
+    
 </body>
 
         

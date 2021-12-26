@@ -26,7 +26,7 @@
 	    		</div>
 	    		<div class="nav_link">
 	    			<ul>
-	    				<li><a href="index.php"> Acceuil </a></li> 
+	    				<li><a href="index.php"> Accueil </a></li> 
 	    				<li><a href="usager.php"> Usager </a></li> 
 	    				<li><a href="medecin.php"> Medecin </a></li>
 	    				<li><a href="consultation.php"> Consultation </a></li>
