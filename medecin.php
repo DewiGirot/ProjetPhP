@@ -42,7 +42,7 @@
         <section>
         Ajouter un médecin
 
-            <form action="medecin.php" method="post">
+            <form action="ajoutMedecin.php" method="post">
 				<p>Civilité :<input type="text" name="civilite"/></p>
 				<p>Nom : <input type="text" name="nom" /></p>
 				<p>Prenom :<input type="text" name="prenom" p>

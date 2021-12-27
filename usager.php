@@ -92,8 +92,8 @@
 
 	$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_Medecin');
 
-	if (!isset($_POST['chercher'])){
-		//Tableau qui affiche le résultat de la recherche
+	if ((!isset($_POST['chercher'])) && (!isset($_POST['keyword']))){
+		//Tableau qui affiche out les patients
 		echo "<table>
 		<thead>
 			<tr>
