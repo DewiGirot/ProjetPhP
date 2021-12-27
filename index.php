@@ -30,7 +30,7 @@
 	    				<li><a href="usager.php"> Usager </a></li> 
 	    				<li><a href="medecin.php"> Medecin </a></li>
 	    				<li><a href="consultation.php"> Consultation </a></li>
-	    				<li><a href="statistique.php"> Statistique </a></li>
+	    				<li><a href="statistique.php"> Statistiques </a></li>
 	    				<div class="connexion">
 	    					<li><a href="login.php"> Se connecter </a></li>
 	    				</div>

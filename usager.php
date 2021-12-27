@@ -31,7 +31,7 @@
 	    				<li><a href="usager.php"> Usager </a></li> 
 	    				<li><a href="medecin.php"> Medecin </a></li>
 	    				<li><a href="consultation.php"> Consultation </a></li>
-	    				<li><a href="statistiques.php"> Statistique </a></li>
+	    				<li><a href="statistique.php"> Statistiques </a></li>
 	    				<div class="connexion">
 	    					<li><a href="login.php"> Se connecter </a></li>
 	    				</div>
@@ -128,8 +128,6 @@ $res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin =
 			</tr>
 			</thead>";
 
-
-		//Affichage des patients en fonction du mot clé
 		while($data = $res->fetch()){
 				echo "<tr>";
 				echo "<td>" . $data['CiviliteP'] . "</td>";
