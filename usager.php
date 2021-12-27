@@ -42,7 +42,7 @@
 
         <!-- Corps de la page -->
         <section>
-            <form action="usager.php" method="post">
+            <form action="ajoutPatient.php" method="post">
 				<p>Civilité :<input type="text" name="civilite"/></p>
 				<p>Nom : <input type="text" name="nom" /></p>
 				<p>Prenom :<input type="text" name="prenom" p>
@@ -52,7 +52,7 @@
 				<p>Date de naissance :<input type="text" name="datenaiss" /></p>
 				<p>Lieu de naissance :<input type="text" name="lieunaiss" /></p>
 				<p>N° de sécurité sociale :<input type="text" name="secu" /></p>
-				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
+				<p><input type="reset" value="Annuler"><input type="submit" name='valider' value="Valider"></p>
 			</form>
         </section>
 		
@@ -70,24 +70,11 @@
 			print("Connect failed: \n" . mysqli_connect_error()); 
 			exit(); 
 		}
-	
-		//Insertion du nouveau patient
-        $req = $linkpdo->prepare('INSERT INTO patient(CiviliteP, NomP,PrenomP,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
-                                    VALUES (:civilite, :nom, :prenom, :adresse, :cp, :ville, :datenaiss, :lieunaiss, :secu)');
 		
-		$req -> bindParam(':civilite', $_POST['civilite']);
-		$req -> bindParam(':nom', $_POST['nom']);
-		$req -> bindParam(':prenom', $_POST['prenom']);
-		$req -> bindParam(':adresse', $_POST['adresse']);
-		$req -> bindParam(':cp', $_POST['cp']);
-		$req -> bindParam(':ville', $_POST['ville']);
-		$req -> bindParam(':datenaiss', $_POST['datenaiss']);
-		$req -> bindParam(':lieunaiss', $_POST['lieunaiss']);
-		$req -> bindParam(':secu', $_POST['secu']);
 		
-        $req->execute();
-		
+
 	?>
+
 <section>
 
 
@@ -103,11 +90,7 @@
 
 	<?php
 
-	
-
-	
-
-$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
+	$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_Medecin');
 
 	if (!isset($_POST['chercher'])){
 		//Tableau qui affiche le résultat de la recherche
@@ -140,7 +123,6 @@ $res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin =
 				echo "<td>" . $data['LieuNaissance'] . "</td>";
 				echo "<td>" . $data['Numero'] . "</td>";
 				echo "<td>" . $data['Nom'] . "</td>";
-
 				echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
 				echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
 				echo "</tr>";

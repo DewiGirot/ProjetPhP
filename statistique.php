@@ -40,7 +40,33 @@
 
         <!-- Corps de la page -->
         <section>
-            
+        <table>
+                <thead>
+                        <tr>
+                           <th>Tranche d'âge</th>
+                           <th>Nombre d'hommes</th>
+                           <th>Nombre de Femmes</th>	
+                        </tr>
+                </thead>
+                    <tr>
+                    <th>Moins de 25 ans</th>
+                        <th> oui </th>
+                        <th> non </th>
+                    </tr>
+                    <tr>
+                    <th>Entre 25 et 50 ans</th>
+                        <th> oui </th>
+                        <th> non </th>
+                    </tr>
+                    <tr>
+                    <th>Plus de 50 ans</th>
+                        <th> oui </th>
+                        <th> non </th>
+                    </tr>
+        </table>
+
+
+
         </section>
 
 
