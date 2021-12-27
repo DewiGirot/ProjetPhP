@@ -83,8 +83,8 @@
 
         <label for="keyword">Chercher un médecin : </label><br/>
         <input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
-        <input type="reset" value="Reset"/>
-        <input type="submit" name="chercher" value="Submit"/>
+        <input type="reset" value="Annuler"/>
+        <input type="submit" name="chercher" value="Rechercher"/>
     </form>
     <br />
 
