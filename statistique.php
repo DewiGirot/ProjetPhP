@@ -24,7 +24,7 @@
 <html>
     <head>
         <!-- En-tête de la page -->
-        <title>Satistiques</title>
+        <title>Statistiques</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style/style.css">
         <link rel="icon" type="image/logo_icon.png" sizes="16x16" href="image/logo_icon.png">
