@@ -91,7 +91,39 @@
     
 
             <?php
-            if (isset($_POST['chercher'])){
+            if (!isset($_POST['chercher'])){
+                echo "
+                <table>
+                <thead>
+                        <tr>
+                           <th>Civilité</th>
+                           <th>Nom</th>
+                           <th>Prénom</th>	
+                           <th> Actions </th>
+                        </tr>
+                        </thead>";
+
+                
+
+                //Affiche tout les docteurs si pas de mots clé rentré
+                $res = $linkpdo->query('SELECT * FROM medecin');
+                while($data = $res->fetch()){
+                        echo "<tr>";
+                        echo "<td>" . $data['Civilite'] . "</td>";
+                        echo "<td>" . $data['Nom'] . "</td>";
+                        echo "<td>" . $data['Prenom'] . "</td>";
+            
+                        echo "<td><a href='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
+                        echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
+                        echo "</tr>";
+                }
+                $res->closeCursor();
+
+            
+
+            echo "</table>";
+            }else{
+                
                 echo "
                 <table>
                 <thead>
