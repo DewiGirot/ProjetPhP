@@ -58,141 +58,141 @@
 		
 		<?php
 		
-		///Connexion au serveur MySQL
-		try {
-			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
-		}catch (PDOException $e){
-			die('Erreur : ' . $e->getMessage());
-		}
-     
-		///Verification de la connexion 
-		if (mysqli_connect_errno()) { 
-			print("Connect failed: \n" . mysqli_connect_error()); 
-			exit(); 
-		}
-		
-		
-
-	?>
-
-<section>
-
-
-	<form method="post" action="usager.php">
-
-	<label for="keyword">Chercher un patient : </label><br/>
-	<input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
-	<input type="reset" value="Annuler"/>
-	<input type="submit" name="chercher" value="Rechercher"/>
-	</form>
-	<br />
-
-
-	<?php
-
-	$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_Medecin');
-
-	if ((!isset($_POST['chercher'])) && (!isset($_POST['keyword']))){
-		//Tableau qui affiche out les patients
-		echo "<table>
-		<thead>
-			<tr>
-			   <th>Civilité</th>
-			   <th>Nom</th>
-			   <th>Prénom</th>
-			   <th>Adresse</th>	
-			   <th>Code Postal</th>	
-			   <th>Ville</th>	
-			   <th>Date de naissance</th>		
-			   <th>Lieu de naissance</th>	
-			   <th>Sécurité Sociale</th>
-			   <th>Médecin référrent</th>		
-			   <th> Actions </th>
-			</tr>
-			</thead>";
-
-		while($data = $res->fetch()){
-				echo "<tr>";
-				echo "<td>" . $data['CiviliteP'] . "</td>";
-				echo "<td>" . $data['NomP'] . "</td>";
-				echo "<td>" . $data['PrenomP'] . "</td>";
-				echo "<td>" . $data['Adresse'] . "</td>";
-				echo "<td>" . $data['CodePostal'] . "</td>";
-				echo "<td>" . $data['Ville'] . "</td>";
-				echo "<td>" . $data['DateNaissance'] . "</td>";
-				echo "<td>" . $data['LieuNaissance'] . "</td>";
-				echo "<td>" . $data['Numero'] . "</td>";
-				echo "<td>" . $data['Nom'] . "</td>";
-				echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
-				echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
-				echo "</tr>";
-		}
-		$res->closeCursor();
-
-		echo "</table>";
-
-	}else{
-
-		$keyword = $_POST['keyword'];
-		
-
-		//Tableau qui affiche le résultat de la recherche
-		echo "<table>
-		<thead>
-			<tr>
-			   <th>Civilité</th>
-			   <th>Nom</th>
-			   <th>Prénom</th>
-			   <th>Adresse</th>	
-			   <th>Code Postal</th>	
-			   <th>Ville</th>	
-			   <th>Date de naissance</th>		
-			   <th>Lieu de naissance</th>	
-			   <th>Sécurité Sociale</th>
-			   <th>Médecin référrent</th>		
-			   <th> Actions </th>
-			</tr>
-			</thead>";
-
-		$keyword = $_POST['keyword'];
-	
-
-		$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
-
-		//Affichage des patients en fonction du mot clé
-		while($data = $res->fetch()){
-			if (in_array($keyword, $data, true)){
-				echo "<tr>";
-				echo "<td>" . $data['CiviliteP'] . "</td>";
-				echo "<td>" . $data['NomP'] . "</td>";
-				echo "<td>" . $data['PrenomP'] . "</td>";
-				echo "<td>" . $data['Adresse'] . "</td>";
-				echo "<td>" . $data['CodePostal'] . "</td>";
-				echo "<td>" . $data['Ville'] . "</td>";
-				echo "<td>" . $data['DateNaissance'] . "</td>";
-				echo "<td>" . $data['LieuNaissance'] . "</td>";
-				echo "<td>" . $data['Numero'] . "</td>";
-				echo "<td>" . $data['Nom'] . "</td>";
-
-				echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
-				echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
-				echo "</tr>";
+			///Connexion au serveur MySQL
+			try {
+				$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
+			}catch (PDOException $e){
+				die('Erreur : ' . $e->getMessage());
 			}
-		}
-		$res->closeCursor();
+	     
+			///Verification de la connexion 
+			if (mysqli_connect_errno()) { 
+				print("Connect failed: \n" . mysqli_connect_error()); 
+				exit(); 
+			}
+			
+		?>
 
-		echo "</table>";
+		<section>
 
-	}
-	?>
 
-</section>
+			<form method="post" action="usager.php">
+				<label for="keyword">Chercher un patient : </label><br/>
+				
+				<input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
+				<input type="reset" value="Annuler"/>
+				<input type="submit" name="chercher" value="Rechercher"/>
+			</form>
+			<br />
+
+
+			<?php
+
+			$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_Medecin');
+
+			if ((!isset($_POST['chercher'])) && (!isset($_POST['keyword']))){
+				
+				//Tableau qui affiche out les patients
+				echo "<table>
+				<thead>
+					<tr>
+					   <th>Civilité</th>
+					   <th>Nom</th>
+					   <th>Prénom</th>
+					   <th>Adresse</th>	
+					   <th>Code Postal</th>	
+					   <th>Ville</th>	
+					   <th>Date de naissance</th>		
+					   <th>Lieu de naissance</th>	
+					   <th>Sécurité Sociale</th>
+					   <th>Médecin référrent</th>		
+					   <th> Actions </th>
+					</tr>
+					</thead>";
+
+				while($data = $res->fetch()){
+						echo "<tr>";
+						echo "<td>" . $data['CiviliteP'] . "</td>";
+						echo "<td>" . $data['NomP'] . "</td>";
+						echo "<td>" . $data['PrenomP'] . "</td>";
+						echo "<td>" . $data['Adresse'] . "</td>";
+						echo "<td>" . $data['CodePostal'] . "</td>";
+						echo "<td>" . $data['Ville'] . "</td>";
+						echo "<td>" . $data['DateNaissance'] . "</td>";
+						echo "<td>" . $data['LieuNaissance'] . "</td>";
+						echo "<td>" . $data['Numero'] . "</td>";
+						echo "<td>" . $data['Nom'] . "</td>";
+						echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
+						echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
+						echo "</tr>";
+				}
+				$res->closeCursor();
+
+				echo "</table>";
+
+			}else{
+
+				$keyword = $_POST['keyword'];
+				
+
+				//Tableau qui affiche le résultat de la recherche
+				echo "<table>
+				<thead>
+					<tr>
+					   <th>Civilité</th>
+					   <th>Nom</th>
+					   <th>Prénom</th>
+					   <th>Adresse</th>	
+					   <th>Code Postal</th>	
+					   <th>Ville</th>	
+					   <th>Date de naissance</th>		
+					   <th>Lieu de naissance</th>	
+					   <th>Sécurité Sociale</th>
+					   <th>Médecin référrent</th>		
+					   <th> Actions </th>
+					</tr>
+					</thead>";
+
+				$keyword = $_POST['keyword'];
+			
+
+				$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
+
+				//Affichage des patients en fonction du mot clé
+				while($data = $res->fetch()){
+					if (in_array($keyword, $data, true)){
+						echo "<tr>";
+						echo "<td>" . $data['CiviliteP'] . "</td>";
+						echo "<td>" . $data['NomP'] . "</td>";
+						echo "<td>" . $data['PrenomP'] . "</td>";
+						echo "<td>" . $data['Adresse'] . "</td>";
+						echo "<td>" . $data['CodePostal'] . "</td>";
+						echo "<td>" . $data['Ville'] . "</td>";
+						echo "<td>" . $data['DateNaissance'] . "</td>";
+						echo "<td>" . $data['LieuNaissance'] . "</td>";
+						echo "<td>" . $data['Numero'] . "</td>";
+						echo "<td>" . $data['Nom'] . "</td>";
+
+						echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
+						echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
+						echo "</tr>";
+					}
+				}
+				$res->closeCursor();
+
+				echo "</table>";
+
+			}
+			?>
+
+		</section>
 		
-        <!-- Pied de la page -->
-        <footer>
-            <h4>8 Pl. Vincent Auriol, 31860 Labarthe-sur-Lèze</h4>
-            <h4>05 61 08 02 58</h4>
-        </footer>
+	    <!-- Pied de la page -->
+	    <footer>
+	        <h4>8 Pl. Vincent Auriol, 31860 Labarthe-sur-Lèze</h4>
+	        <h4>05 61 08 02 58</h4>
+	    </footer>
 
-    </body>
+	    </body>
+
 </html>

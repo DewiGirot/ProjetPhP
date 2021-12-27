@@ -40,6 +40,7 @@
 
         <!-- Corps de la page -->
         <section>
+        
         Ajouter un médecin
 
             <form action="ajoutMedecin.php" method="post">
@@ -48,125 +49,118 @@
 				<p>Prenom :<input type="text" name="prenom" p>
 				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
 			</form>
+
         </section>
 
         <?php
 		
-		///Connexion au serveur MySQL
-		try {
-			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
-		}catch (PDOException $e){
-			die('Erreur : ' . $e->getMessage());
-		}
-     
-		///Verification de la connexion 
-		if (mysqli_connect_errno()) { 
-			print("Connect failed: \n" . mysqli_connect_error()); 
-			exit(); 
-		}
-	
-        $req = $linkpdo->prepare('INSERT INTO medecin(Civilite, Nom,Prenom)
-                                    VALUES (:civilite, :nom, :prenom)');
+    		///Connexion au serveur MySQL
+    		try {
+    			$linkpdo = new PDO("mysql:host=localhost;dbname=cabinet_medical", 'root'); 
+    		}catch (PDOException $e){
+    			die('Erreur : ' . $e->getMessage());
+    		}
+         
+    		///Verification de la connexion 
+    		if (mysqli_connect_errno()) { 
+    			print("Connect failed: \n" . mysqli_connect_error()); 
+    			exit(); 
+    		}
+    	
+            $req = $linkpdo->prepare('INSERT INTO medecin(Civilite, Nom,Prenom)
+                                        VALUES (:civilite, :nom, :prenom)');
+    		
+    		$req -> bindParam(':civilite', $_POST['civilite']);
+    		$req -> bindParam(':nom', $_POST['nom']);
+    		$req -> bindParam(':prenom', $_POST['prenom']);
+    		
+            $req->execute();
 		
-		$req -> bindParam(':civilite', $_POST['civilite']);
-		$req -> bindParam(':nom', $_POST['nom']);
-		$req -> bindParam(':prenom', $_POST['prenom']);
-		
-        $req->execute();
-		
-	?>
+	   ?>
 
 
-<section>
-<body>
-    <form method="post" action="medecin.php">
+        <section>
+            <form method="post" action="medecin.php">
 
-        <label for="keyword">Chercher un médecin : </label><br/>
-        <input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
-        <input type="reset" value="Annuler"/>
-        <input type="submit" name="chercher" value="Rechercher"/>
-    </form>
-    <br />
+                <label for="keyword">Chercher un médecin : </label><br/>
+                <input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
+                <input type="reset" value="Annuler"/>
+                <input type="submit" name="chercher" value="Rechercher"/>
+            </form>
+            <br />
 
-    
+            
 
             <?php
-            if (!isset($_POST['chercher'])){
-                echo "
-                <table>
-                <thead>
-                        <tr>
-                           <th>Civilité</th>
-                           <th>Nom</th>
-                           <th>Prénom</th>	
-                           <th> Actions </th>
-                        </tr>
-                        </thead>";
-
                 
+                if (!isset($_POST['chercher'])){
+                    echo "
+                    <table>
+                    <thead>
+                            <tr>
+                               <th>Civilité</th>
+                               <th>Nom</th>
+                               <th>Prénom</th>	
+                               <th> Actions </th>
+                            </tr>
+                            </thead>";
 
-                //Affiche tout les docteurs si pas de mots clé rentré
-                $res = $linkpdo->query('SELECT * FROM medecin');
-                while($data = $res->fetch()){
-                        echo "<tr>";
-                        echo "<td>" . $data['Civilite'] . "</td>";
-                        echo "<td>" . $data['Nom'] . "</td>";
-                        echo "<td>" . $data['Prenom'] . "</td>";
-            
-                        echo "<td><a href='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
-                        echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
-                        echo "</tr>";
-                }
-                $res->closeCursor();
+                    
 
-            
-
-            echo "</table>";
-            }else{
+                    //Affiche tout les docteurs si pas de mots clé rentré
+                    $res = $linkpdo->query('SELECT * FROM medecin');
+                    while($data = $res->fetch()){
+                            echo "<tr>";
+                            echo "<td>" . $data['Civilite'] . "</td>";
+                            echo "<td>" . $data['Nom'] . "</td>";
+                            echo "<td>" . $data['Prenom'] . "</td>";
                 
-                echo "
-                <table>
-                <thead>
-                        <tr>
-                           <th>Civilité</th>
-                           <th>Nom</th>
-                           <th>Prénom</th>	
-                           <th> Actions </th>
-                        </tr>
-                        </thead>";
-
-                $keyword = $_POST['keyword'];
-
-
-                $res = $linkpdo->query('SELECT * FROM medecin');
-                while($data = $res->fetch()){
-                    if (in_array($keyword, $data, true)){
-                        echo "<tr>";
-                        echo "<td>" . $data['Civilite'] . "</td>";
-                        echo "<td>" . $data['Nom'] . "</td>";
-                        echo "<td>" . $data['Prenom'] . "</td>";
-            
-                        echo "<td><a href='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
-                        echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
-                        echo "</tr>";
+                            echo "<td><a href='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
+                            echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
+                            echo "</tr>";
                     }
+                    $res->closeCursor();
+
+                    echo "</table>";
+
+                }else{
+                    
+                    echo "
+                    <table>
+                    <thead>
+                            <tr>
+                               <th>Civilité</th>
+                               <th>Nom</th>
+                               <th>Prénom</th>	
+                               <th> Actions </th>
+                            </tr>
+                            </thead>";
+
+                    $keyword = $_POST['keyword'];
+
+
+                    $res = $linkpdo->query('SELECT * FROM medecin');
+                    while($data = $res->fetch()){
+                        if (in_array($keyword, $data, true)){
+                            echo "<tr>";
+                            echo "<td>" . $data['Civilite'] . "</td>";
+                            echo "<td>" . $data['Nom'] . "</td>";
+                            echo "<td>" . $data['Prenom'] . "</td>";
+                
+                            echo "<td><a href='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>Modifier</a> ";
+                            echo "<a href='supprimerMedecin.php?id=" . $data['Id_Medecin'] . "'>Supprimer</a></td>";
+                            echo "</tr>";
+                        }
+                    }
+                    $res->closeCursor();
+
                 }
-                $res->closeCursor();
 
-            }
-
-            echo "</table>";
-			
+                echo "</table>";
 			
 			?>
-    
-</body>
-
-        
-        
-			
+		
 		</section>
-
 
 
         <!-- Pied de la page -->
@@ -176,4 +170,5 @@
         </footer>
 
     </body>
+
 </html>
