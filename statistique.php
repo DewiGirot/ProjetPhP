@@ -136,6 +136,46 @@
                         </th>
                     </tr>
         </table>
+        </section>
+
+        <section>
+            <table>
+                <thead>
+                <tr>
+                           <th>Nom du médecin</th>
+                           <th>Nombre d'heure de consulltations</th>
+                </tr>
+                </thead>
+                <?php
+                  $resNomDr = $linkpdo->query('SELECT * FROM medecin ORDER BY Id_Medecin');
+                  $cpt=1;
+                    while($data = $resNomDr->fetch()){
+                            echo "<tr>";
+                            echo "<td>" . $data['Nom'] . "</td>";
+
+                            $nbH=0;
+                            $resNbH = $linkpdo->prepare("SELECT SUM(DureeConsultation) as NbH 
+                                                        FROM consultation 
+                                                        WHERE  consultation.Id_Medecin = :id ");
+
+                            $resNbH -> bindParam(':id', $cpt);
+                            $resNbH->execute();
+                            $tmp=$resNbH->fetch();
+
+                            $nbH= ($tmp['NbH'] / 3600);
+                            echo "<td>" . $nbH . "</td>";
+
+                
+                            echo "</tr>";
+                            $cpt=$cpt+1;
+                    }
+                    $resNomDr->closeCursor();
+
+                    echo "</table>";
+
+                ?>
+
+
 
 
 
