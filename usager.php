@@ -52,6 +52,7 @@
 				<p>Date de naissance (aaaa/mm/jj):<input type="text" name="datenaiss" /></p>
 				<p>Lieu de naissance :<input type="text" name="lieunaiss" /></p>
 				<p>N° de sécurité sociale :<input type="text" name="secu" /></p>
+				<p>Médecin réferrent (optionnel) :<input type="text" name="NomMedecin" /></p>
 				<p><input type="reset" value="Annuler"><input type="submit" name='valider' value="Valider"></p>
 			</form>
         </section>
