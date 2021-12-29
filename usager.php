@@ -49,7 +49,7 @@
 				<p>Adresse : <input type="text" name="adresse" /></p>
 				<p>Code Postal :<input type="text" name="cp" /></p>
 				<p>Ville de résidence :<input type="text" name="ville" /></p>
-				<p>Date de naissance :<input type="text" name="datenaiss" /></p>
+				<p>Date de naissance (aaaa/mm/jj):<input type="text" name="datenaiss" /></p>
 				<p>Lieu de naissance :<input type="text" name="lieunaiss" /></p>
 				<p>N° de sécurité sociale :<input type="text" name="secu" /></p>
 				<p><input type="reset" value="Annuler"><input type="submit" name='valider' value="Valider"></p>
@@ -88,7 +88,7 @@
 
 			<?php
 
-			$res = $linkpdo->query('SELECT * FROM patient ORDER BY Id_Patient');
+			$resPatients = $linkpdo->query('SELECT * FROM patient ORDER BY Id_Patient');
 
 			if ((!isset($_POST['chercher'])) && (!isset($_POST['keyword']))){
 				
@@ -110,8 +110,9 @@
 					</tr>
 					</thead>";
 
-				while($data = $res->fetch()){
+				while($data = $resPatients->fetch()){
 						echo "<tr>";
+
 						echo "<td>" . $data['CiviliteP'] . "</td>";
 						echo "<td>" . $data['NomP'] . "</td>";
 						echo "<td>" . $data['PrenomP'] . "</td>";
@@ -121,19 +122,32 @@
 						echo "<td>" . $data['DateNaissance'] . "</td>";
 						echo "<td>" . $data['LieuNaissance'] . "</td>";
 						echo "<td>" . $data['Numero'] . "</td>";
-						echo "<td>" . "test" . "</td>";
+						
+						$idPatient=$data['Id_Patient'];
+
+						$resNdr = $linkpdo->prepare("SELECT medecin.Nom
+                                                        FROM patient,medecin 
+														WHERE medecin.Id_Medecin = patient.Id_Medecin
+                                                        AND  patient.Id_Patient = :id ");
+						$resNdr -> bindParam(':id', $idPatient);
+						$resNdr->execute();
+
+						if ($tmp=$resNdr->fetch()){
+							echo "<td>" . $tmp['Nom'] . "</td>";
+						}else{
+							echo "<td>" . "Aucun" . "</td>";
+						}
 						
 						echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
 						echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
+
 						echo "</tr>";
 				}
-				$res->closeCursor();
+				$resPatients->closeCursor();
 
 				echo "</table>";
 
 			}else{
-
-				$keyword = $_POST['keyword'];
 				
 
 				//Tableau qui affiche le résultat de la recherche
@@ -157,10 +171,6 @@
 				$keyword = $_POST['keyword'];
 			
 
-				$resPatients = $linkpdo->query('SELECT * FROM patient ORDER BY Id_Patient');
-
-				$cpt=1;
-
 				//Affichage des patients en fonction du mot clé
 				while($data = $resPatients->fetch()){
 					if (in_array($keyword, $data, true)){
@@ -175,9 +185,26 @@
 						echo "<td>" . $data['LieuNaissance'] . "</td>";
 						echo "<td>" . $data['Numero'] . "</td>";
 
+						$idPatient=$data['Id_Patient'];
+
+						$resNdr = $linkpdo->prepare("SELECT medecin.Nom
+                                                        FROM patient,medecin 
+														WHERE medecin.Id_Medecin = patient.Id_Medecin
+                                                        AND  patient.Id_Patient = :id ");
+						$resNdr -> bindParam(':id', $idPatient);
+						$resNdr->execute();
+
+						if ($tmp=$resNdr->fetch()){
+							echo "<td>" . $tmp['Nom'] . "</td>";
+						}else{
+							echo "<td>" . "Aucun" . "</td>";
+						}
+						
+
 						echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
 						echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
 						echo "</tr>";
+
 					}
 				}
 				$resPatients->closeCursor();

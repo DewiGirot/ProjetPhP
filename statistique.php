@@ -150,7 +150,6 @@
 
                 
                   $resNomDr = $linkpdo->query('SELECT * FROM medecin ORDER BY Id_Medecin');
-                  $cpt=1;
                     while($data = $resNomDr->fetch()){
                             echo "<tr>";
 
@@ -159,10 +158,11 @@
 
                             //Requete qui récupère le temps de consultation total en seconde
                             $nbH=0;
+                            $idMedecin=$data['Id_Medecin'];
                             $resNbH = $linkpdo->prepare("SELECT SUM(DureeConsultation) as NbH 
                                                         FROM consultation 
                                                         WHERE  consultation.Id_Medecin = :id ");
-                            $resNbH -> bindParam(':id', $cpt);
+                            $resNbH -> bindParam(':id',$idMedecin);
                             $resNbH->execute();
                             $tmp=$resNbH->fetch();
 
@@ -171,7 +171,6 @@
                             echo "<td>" . $nbH . "</td>";
                 
                             echo "</tr>";
-                            $cpt=$cpt+1;
                     }
                     $resNomDr->closeCursor();
 
