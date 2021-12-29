@@ -88,7 +88,7 @@
 
 			<?php
 
-			$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_Medecin');
+			$res = $linkpdo->query('SELECT * FROM patient ORDER BY Id_Patient');
 
 			if ((!isset($_POST['chercher'])) && (!isset($_POST['keyword']))){
 				
@@ -121,7 +121,8 @@
 						echo "<td>" . $data['DateNaissance'] . "</td>";
 						echo "<td>" . $data['LieuNaissance'] . "</td>";
 						echo "<td>" . $data['Numero'] . "</td>";
-						echo "<td>" . $data['Nom'] . "</td>";
+						echo "<td>" . "test" . "</td>";
+						
 						echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
 						echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
 						echo "</tr>";
@@ -156,10 +157,12 @@
 				$keyword = $_POST['keyword'];
 			
 
-				$res = $linkpdo->query('SELECT * FROM patient,medecin WHERE patient.Id_Medecin = medecin.Id_medecin');
+				$resPatients = $linkpdo->query('SELECT * FROM patient ORDER BY Id_Patient');
+
+				$cpt=1;
 
 				//Affichage des patients en fonction du mot clé
-				while($data = $res->fetch()){
+				while($data = $resPatients->fetch()){
 					if (in_array($keyword, $data, true)){
 						echo "<tr>";
 						echo "<td>" . $data['CiviliteP'] . "</td>";
@@ -171,14 +174,13 @@
 						echo "<td>" . $data['DateNaissance'] . "</td>";
 						echo "<td>" . $data['LieuNaissance'] . "</td>";
 						echo "<td>" . $data['Numero'] . "</td>";
-						echo "<td>" . $data['Nom'] . "</td>";
 
 						echo "<td><a href='modifierUsager.php?id=" . $data['Id_Patient'] . "'>Modifier</a> ";
 						echo "<a href='supprimerPatient.php?id=" . $data['Id_Patient'] . "'>Supprimer</a></td>";
 						echo "</tr>";
 					}
 				}
-				$res->closeCursor();
+				$resPatients->closeCursor();
 
 				echo "</table>";
 
