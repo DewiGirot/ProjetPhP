@@ -21,24 +21,31 @@
         <html>
             <head>
                 <meta charset="utf-8">
-                <link rel="stylesheet" href="style/style.css">
+                <link rel="stylesheet" href="style/styleLogin.css">
                 <title>Connexion</title>
             </head>
             <body>
-                <form action="login.php" method="POST">
+                <header>
+                    <nav>
+                        <a href="index.php" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>                        
+                    </nav>
+                </header>
+                <section>
                     <h1>Connexion</h1>
-                    
-                    <label><b>Nom d'utilisateur</b></label>
-                    <input type="text" placeholder="Entrer le nom d'utilisateur" name="login" required>
 
-                    <label><b>Mot de passe</b></label>
-                    <input type="password" placeholder="Entrer le mot de passe" name="mdp" required>
+                    <form class="log" action="login.php" method="POST">
+                        
+                        <label for="login">Nom d'utilisateur</label>
+                        <input type="text" placeholder="Entrer le nom d'utilisateur" name="login" required>
 
-                    <input type="submit" id='submit' value='LOGIN' >
-                </form>
+                        <label for="mdp">Mot de passe</label>
+                        <input type="password" placeholder="Entrer le mot de passe" name="mdp" required>
+
+                        <input type="submit" id='submit' value='LOGIN' >
+                    </form>
+                </section>
             </body>
         </html>
 <?php
     }
 ?>
-        
