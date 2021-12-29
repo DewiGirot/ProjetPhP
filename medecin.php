@@ -26,9 +26,9 @@
                 <div class="nav_link">
                     <ul>
                         <li><a href="index.php"> Accueil </a></li> 
-                        <li><a href="usager.php"> Usager </a></li> 
-                        <li><a href="medecin.php"> Medecin </a></li>
-                        <li><a href="consultation.php"> Consultation </a></li>
+                        <li><a href="usager.php"> Patients </a></li> 
+                        <li><a href="medecin.php"> Medecins </a></li>
+                        <li><a href="consultation.php"> Consultations </a></li>
                         <li><a href="statistique.php"> Statistiques </a></li>
                         <div class="connexion">
                             <li><a href="login.php"> Se connecter </a></li>

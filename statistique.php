@@ -40,9 +40,9 @@
                 <div class="nav_link">
                     <ul>
                         <li><a href="index.php"> Accueil </a></li> 
-                        <li><a href="usager.php"> Usager </a></li> 
-                        <li><a href="medecin.php"> Medecin </a></li>
-                        <li><a href="consultation.php"> Consultation </a></li>
+                        <li><a href="usager.php"> Patients </a></li> 
+                        <li><a href="medecin.php"> Medecins </a></li>
+                        <li><a href="consultation.php"> Consultations </a></li>
                         <li><a href="statistique.php"> Statistiques </a></li>
                         <div class="connexion">
                             <li><a href="login.php"> Se connecter </a></li>
@@ -143,13 +143,13 @@
                 <thead>
                 <tr>
                            <th>Nom du médecin</th>
-                           <th>Nombre d'heure de consulltations</th>
+                           <th>Nombre d'heure de consultations</th>
                 </tr>
                 </thead>
                 <?php
 
                 
-                  $resNomDr = $linkpdo->query('SELECT * FROM medecin ORDER BY Id_Medecin');
+                    $resNomDr = $linkpdo->query('SELECT * FROM medecin ORDER BY Id_Medecin');
                     while($data = $resNomDr->fetch()){
                             echo "<tr>";
 

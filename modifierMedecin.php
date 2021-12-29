@@ -25,8 +25,8 @@ if (mysqli_connect_errno()) {
                 <label for="civilite">Civilité</label>            <input type="text" name="nvcivilite" id="civilite" value="<?php echo $data['Civilite'];?>"/><br />
                 <label for="name">Nom</label>            <input type="text" name="nvname" id="name" value="<?php echo $data['Nom'];?>"/><br />
                 <label for="firstname">Prénom</label>      <input type="text" name="nvfirstname" id="firstname" value="<?php echo $data['Prenom'];?>"/><br />
-                <input type="reset" value="Reset"/>
-                <input type="submit" value="Submit"/>
+                <input type="reset" value="Annuler"/>
+                <input type="submit" value="Valider"/>
             </form>
     <?php
 

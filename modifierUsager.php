@@ -32,8 +32,8 @@ if (mysqli_connect_errno()) {
                 <label for="lieunaiss">Lieu de naissance</label>  <input type="text" name="nvlieunaiss" id="lieunaiss" value="<?php echo $data['LieuNaissance'];?>"/><br />
                 <label for="secu">Sécurité Sociale</label>  <input type="text" name="nvsecu" id="secu" value="<?php echo $data['Numero'];?>"/><br />
 
-                <input type="reset" value="Reset"/>
-                <input type="submit" value="Submit"/>
+                <input type="reset" value="Annuler"/>
+                <input type="submit" value="Valider"/>
             </form>
     <?php
 
