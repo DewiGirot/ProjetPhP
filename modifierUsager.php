@@ -21,8 +21,11 @@ if (mysqli_connect_errno()) {
 $idP=$_GET['id'];
 $resID = $linkpdo->prepare('SELECT * FROM medecin, patient WHERE medecin.Id_Medecin=patient.Id_Medecin AND patient.Id_Patient=:idP');
 $resID->execute(array(':idP' => $idP));
-$data=$resID->fetch();
-$nomM=$data['Nom'];
+if($data=$resID->fetch()){
+    $nomM=$data['Nom'];
+}else{
+    $nomM="";
+}
 
     // Formulaire pour rentrer les nouvelles info personnelles
     $res = $linkpdo->query('SELECT * FROM patient');
@@ -61,10 +64,10 @@ $nomM=$data['Nom'];
             //Récupérer l'id du médecin
             $reqNom = $linkpdo -> prepare('SELECT * FROM medecin WHERE medecin.Nom=:NomM');
             $reqNom->execute(array(':NomM' => $_POST['nvmedecin']));
-            if ($data=$reqNom->fetch()){
+            if (!($data=$reqNom->fetch())){
                 echo "Médecin non existant";
                 sleep(5);
-                header("modifierUsager.php?id= ". $_POST['id']  );
+                header('modifierUsager.php?id='.$idP);
             }
             $nomM=$data['Id_Medecin'];
 
@@ -121,4 +124,6 @@ $nomM=$data['Nom'];
 
             header('Location: ./usager.php');
     }
+
+    
 ?>
