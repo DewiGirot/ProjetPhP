@@ -33,7 +33,7 @@
 	    				<li><a href="consultation.php"> Consultations </a></li>
 	    				<li><a href="statistique.php"> Statistiques </a></li>
 	    				<div class="connexion">
-	    					<li><a href="login.php"> Se connecter </a></li>
+	    					<li><a href="logout.php"> Se déconnecter </a></li>
 	    				</div>
 	    			</ul>
 	    		</div>
