@@ -77,19 +77,20 @@ footer{
 
 	/*Formulaires*/
 
-/*--Premier formulaire--*/
-.patient_form fieldset{
+/*--Ajout patient ou médecin--*/
+.form_signup fieldset{
+	border-color: #8cc63f;
 	padding: 15px;
 	width: 40%;
 }
 
-.patient_form legend {
+.form_signup legend {
 	font-weight:bold;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.patient_form input{
+.form_signup input{
 	width: 50%;
 	background-color: #EDEDED;
 	border-radius: 3px ;
@@ -100,6 +101,31 @@ footer{
     margin-bottom: 5px;
 }
 
+
+/*--Recherche patient ou médecin--*/
+.form_search fieldset{
+	border-color: #8cc63f;
+	padding: 15px;
+	width: 40%;
+}
+
+.form_search legend {
+	font-weight:bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.form_search input{
+	width: 200px;
+	background-color: #EDEDED;
+	border-radius: 3px ;
+	border-color: #EDEDED;
+	border-style: solid;
+	padding: 2px;
+}
+
+
+	/*Boutons formulaire*/
 .action_button{
 	width: 50%;
 	display: flex;
@@ -112,29 +138,6 @@ footer{
 	padding: 2px;
 	background-color: #8cc63f;
 	border-color: #8cc63f;
-}
-
-
-/*--Deuxieme formulaire--*/
-.patient_form2 fieldset{
-	padding: 15px;
-	width: 40%;
-	margin-bottom: 20px;
-}
-
-.patient_form2 legend {
-	font-weight:bold;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.patient_form2 input{
-	width: 200px;
-	background-color: #EDEDED;
-	border-radius: 3px ;
-	border-color: #EDEDED;
-	border-style: solid;
-	padding: 2px;
 }
 
 .buttons{

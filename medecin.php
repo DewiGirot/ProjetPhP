@@ -40,16 +40,19 @@
 
         <!-- Corps de la page -->
         <section>
-        
-        Ajouter un médecin
+            <form class="form_signup" action="ajoutMedecin.php" method="post">
+                <fieldset>
+                    <legend for="keyword">Ajouter un médecin</legend>
 
-            <form action="ajoutMedecin.php" method="post">
-				<p>Civilité :<input type="text" name="civilite"/></p>
-				<p>Nom : <input type="text" name="nom" /></p>
-				<p>Prenom :<input type="text" name="prenom" p>
-				<p><input type="reset" value="Annuler"><input type="submit" value="Valider"></p>
+                    <label for="civilite">Civilité :    <input type="text" name="civilite" placeholder="M/Mme/Mlle"/></label>
+    				<label for="nom">Nom :              <input type="text" name="nom" placeholder="NOM"/></label>
+                    <label for="prenom">Prénom :        <input type="text" name="prenom" placeholder="Prénom"/></label>
+    				<div class="action_button">
+                        <input type="reset" name='annuler' value="Annuler">
+                        <input type="submit" name='valider' value="Valider">
+                    </div>
+                </fieldset>
 			</form>
-
         </section>
 
         <?php
@@ -80,12 +83,16 @@
 
 
         <section>
-            <form method="post" action="medecin.php">
+            <form class="form_search" method="post" action="medecin.php">
+                <fieldset>
+                    <legend for="keyword"> Chercher un médecin</legend>
 
-                <label for="keyword">Chercher un médecin : </label><br/>
-                <input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
-                <input type="reset" value="Annuler"/>
-                <input type="submit" name="chercher" value="Rechercher"/>
+                    <div class="buttons">
+                        <input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
+                        <div class="button_search">
+                            <input type="submit" name="chercher" value="Rechercher"/>
+                        </div>
+                    </div>  
             </form>
             <br />
 
@@ -156,6 +163,7 @@
                 echo "</table>";
 			
 			?>
+                </fieldset>
 		
 		</section>
 

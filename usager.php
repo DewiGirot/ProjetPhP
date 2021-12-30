@@ -42,7 +42,7 @@
 
         <!-- Corps de la page -->
         <section>
-            <form class="patient_form" action="ajoutPatient.php" method="post">
+            <form class="form_signup" action="ajoutPatient.php" method="post">
             	<fieldset>
 	            	<legend>Inscrire un patient</legend>
 	            	
@@ -57,7 +57,7 @@
 					<label for="cp">N° de sécurité sociale :			<input type="text" name="secu" placeholder="Numéro de sécurité sociale"/></label>
 					<label for="cp">Médecin référrent (optionnel) :		<input type="text" name="NomMedecin" placeholder="Nom du médecin référent"/></label>
 					<div class="action_button">
-						<input type="reset" value="Annuler">
+						<input type="reset" name='annuler' value="Annuler">
 						<input type="submit" name='valider' value="Valider">
 					</div>
 				</fieldset>
@@ -84,7 +84,7 @@
 		<section>
 
 
-			<form class="patient_form2" method="post" action="usager.php">
+			<form class="form_search" method="post" action="usager.php">
 				<fieldset>
 	            	<legend for="keyword">Chercher un patient</legend>
 
