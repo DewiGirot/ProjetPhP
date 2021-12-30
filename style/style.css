@@ -157,6 +157,33 @@ footer{
 
 
 
+	/*--Page statistiques--*/
+.stats_tableaux{
+	display: flex;
+	flex-direction: row;
+}
+
+.stats_tableaux fieldset{
+	width: 90%;
+	padding: 10px;
+	margin-left: 5%;
+	margin-right: 5%;
+
+	display: flex;
+	justify-content: center;
+	border-style: hidden;
+	text-align: center;
+}
+
+.stats_tableaux legend{
+	font-weight: bold;
+	padding-right: 5px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+
+
 	/*--Tableau--*/
 table {
     border-collapse: collapse;
