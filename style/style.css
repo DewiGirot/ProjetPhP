@@ -7,7 +7,7 @@
 }
 
 
-/*--Menu nav--*/
+	/*--Menu nav--*/
 nav{
 	background-color: #EFF2F9;
 	width: 100%;
@@ -40,7 +40,7 @@ nav li a{
 	
 }
 
-/*--Bouton de connexion--*/
+	/*--Bouton de connexion--*/
 .connexion li a{
 	padding: 15px;
 	color: white;
@@ -51,18 +51,16 @@ nav li a{
 
 
 
-/*--Corps de la page (Section)--*/
+	/*--Corps de la page (Section)--*/
 section{
 	margin-left: 10%;
 	margin-right: 10%;
-	margin-top: 5%;
-	margin-bottom: 5%:
-	min-width: 500px;
+	margin-top: 3%;
 }
 
 
 
-/*--Pied de la page (Footer)--*/
+	/*--Pied de la page (Footer)--*/
 footer{
 	margin-top: 5%;
 	height: 150px;
@@ -77,7 +75,9 @@ footer{
 
 
 
-/*patient_form*/
+	/*Formulaires*/
+
+/*--Premier formulaire--*/
 .patient_form fieldset{
 	padding: 15px;
 	width: 40%;
@@ -89,10 +89,6 @@ footer{
     padding-right: 10px;
 }
 
-.patient_form label{
-	font-weight: bold;
-}
-
 .patient_form input{
 	width: 50%;
 	background-color: #EDEDED;
@@ -100,26 +96,65 @@ footer{
 	border-color: #EDEDED;
 	border-style: solid;
 	margin-left: 5%;
-    margin-right: 50%;
+    margin-right: 45%;
+    margin-bottom: 5px;
 }
 
 .action_button{
+	width: 50%;
 	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 .action_button input{
-	margin-left: 20px;
+	width: 25%;
+    margin-right: 5%;
 	padding: 2px;
 	background-color: #8cc63f;
 	border-color: #8cc63f;
 }
 
 
+/*--Deuxieme formulaire--*/
+.patient_form2 fieldset{
+	padding: 15px;
+	width: 40%;
+	margin-bottom: 20px;
+}
 
-/*--Tableau--*/
+.patient_form2 legend {
+	font-weight:bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.patient_form2 input{
+	width: 200px;
+	background-color: #EDEDED;
+	border-radius: 3px ;
+	border-color: #EDEDED;
+	border-style: solid;
+	padding: 2px;
+}
+
+.buttons{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-right: 15px;
+	margin-bottom: 20px;
+}
+
+.button_search input{
+	margin-left: 15px;
+	width: auto;
+	background-color: #8cc63f;
+	border-color: #8cc63f;
+}
+
+
+
+	/*--Tableau--*/
 table {
     border-collapse: collapse;
     border: 2px solid rgb(200, 200, 200);
