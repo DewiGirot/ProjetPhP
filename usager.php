@@ -42,18 +42,25 @@
 
         <!-- Corps de la page -->
         <section>
-            <form action="ajoutPatient.php" method="post">
-				<p>Civilité :<input type="text" name="civilite"/></p>
-				<p>Nom : <input type="text" name="nom" /></p>
-				<p>Prenom :<input type="text" name="prenom" p>
-				<p>Adresse : <input type="text" name="adresse" /></p>
-				<p>Code Postal :<input type="text" name="cp" /></p>
-				<p>Ville de résidence :<input type="text" name="ville" /></p>
-				<p>Date de naissance (aaaa/mm/jj):<input type="text" name="datenaiss" /></p>
-				<p>Lieu de naissance :<input type="text" name="lieunaiss" /></p>
-				<p>N° de sécurité sociale :<input type="text" name="secu" /></p>
-				<p>Médecin réferrent (optionnel) :<input type="text" name="NomMedecin" /></p>
-				<p><input type="reset" value="Annuler"><input type="submit" name='valider' value="Valider"></p>
+            <form class="patient_form" action="ajoutPatient.php" method="post">
+            	<fieldset>
+	            	<legend>Inscrire un patient</legend>
+	            	
+					<p>Civilité : <input type="text" name="civilite"placeholder="M/Mme/Mlle"/></p>
+					<p>Nom : <input type="text" name="nom" /></p>
+					<p>Prenom : <input type="text" name="prenom" p>
+					<p>Adresse : <input type="text" name="adresse" /></p>
+					<p>Code Postal : <input type="text" name="cp" /></p>
+					<p>Ville de résidence : <input type="text" name="ville" /></p>
+					<p>Date de naissance (aaaa/mm/jj) : <input type="text" name="datenaiss" /></p>
+					<p>Lieu de naissance : <input type="text" name="lieunaiss" /></p>
+					<p>N° de sécurité sociale : <input type="text" name="secu" /></p>
+					<p>Médecin réferrent (optionnel) : <input type="text" name="NomMedecin" /></p>
+					<div class="action_button">
+						<input type="reset" value="Annuler">
+						<input type="submit" name='valider' value="Valider">
+					</div>
+				</fieldset>
 			</form>
         </section>
 		
@@ -77,9 +84,9 @@
 		<section>
 
 
-			<form method="post" action="usager.php">
-				<label for="keyword">Chercher un patient : </label><br/>
-				
+			<form class="patient_form" method="post" action="usager.php">
+				<fieldset>
+	            	<legend for="keyword">Chercher un patient</legend>				
 				<input type="text" name="keyword" id="keyword" placeholder="Entrez des mots-clés"/><br/>
 				<input type="reset" value="Annuler"/>
 				<input type="submit" name="chercher" value="Rechercher"/>

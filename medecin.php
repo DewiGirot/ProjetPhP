@@ -94,16 +94,15 @@
             <?php
                 
                 if (!isset($_POST['chercher'])){
-                    echo "
-                    <table>
-                    <thead>
+                    echo "<table>
+                        <thead>
                             <tr>
                                <th>Civilité</th>
                                <th>Nom</th>
                                <th>Prénom</th>	
                                <th> Actions </th>
                             </tr>
-                            </thead>";
+                        </thead>";
 
                     
 
@@ -120,8 +119,6 @@
                             echo "</tr>";
                     }
                     $res->closeCursor();
-
-                    echo "</table>";
 
                 }else{
                     
