@@ -54,8 +54,6 @@ if($data=$resID->fetch()){
     }
     $res->closeCursor();
 
-    header('Location:medecinNonExistant.php?id='.$idP);
-    exit();
 
 
     //Mise a jour du patient avec médecin référent
@@ -68,7 +66,8 @@ if($data=$resID->fetch()){
             $reqNom = $linkpdo -> prepare('SELECT * FROM medecin WHERE medecin.Nom=:NomM');
             $reqNom->execute(array(':NomM' => $_POST['nvmedecin']));
             if (!($data=$reqNom->fetch())){
-                header('medecinNonExistant.php?id='.$idP);
+                echo "Médecin non existant";
+                exit();
             }
             $nomM=$data['Id_Medecin'];
 
