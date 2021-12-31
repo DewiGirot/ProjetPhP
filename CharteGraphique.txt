@@ -1,13 +1,13 @@
 Couleurs du logo qui sont réutilisées : 
- - marron : #7d5148
- - vert clair : 8cc63f
+    - marron : #7d5148
+    - vert clair : 8cc63f
 
 Couleurs de fond de la navbar ainsi que le background des input :
- - #EFF2F9
+    - #EFF2F9
 
 Couleurs bouton d'actions :
- - #8cc63f
+    - #8cc63f
 
 Couleur des tableaux : 
- - #3f87a6
- - #EFF2F9
+    - #3f87a6
+    - #EFF2F9

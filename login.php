@@ -27,7 +27,7 @@
             <body>
                 <header>
                     <nav>
-                        <a href="index.php" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>                        
+                        <a href="index.php" title="Page d'acceuil"> <img alt="Logo" src="image/logo_sansfond.png"/></a>
                     </nav>
                 </header>
                 <section>
