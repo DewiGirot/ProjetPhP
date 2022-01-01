@@ -13,7 +13,13 @@
 	    				<li><a href="consultation.php"> Consultations </a></li>
 	    				<li><a href="statistique.php"> Statistiques </a></li>
 	    				<div class="connexion">
-	    					<li><a href="logout.php"> Se déconnecter </a></li>
+	    					<?php
+							if (!isset($_SESSION['login'])) {
+								echo "<li><a href='login.php'> Se connecter</a></li>";
+							}else{
+								echo "<li><a href='logout.php'> Se déconnecter</a></li>";
+							}
+							?>
 	    				</div>
 	    			</ul>
 	    		</div>
