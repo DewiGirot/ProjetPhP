@@ -86,7 +86,7 @@ if($data=$resID->fetch()){
             exit();
     }
 
-    // Mise a jour du patient avec requête
+    // Mise a jour du patient sans médecin
     if(!empty($_POST['nvname']) && !empty($_POST['nvfirstname']) && !empty($_POST['nvsecu'])
         && !empty($_POST['nvaddress']) && !empty($_POST['nvpostalCode'])
         && !empty($_POST['nvdatenaiss']) && !empty($_POST['nvlieunaiss'])
@@ -96,7 +96,7 @@ if($data=$resID->fetch()){
             $req = $linkpdo->prepare('UPDATE patient 
                                             SET CiviliteP = :nvcivilite, NomP = :nvnom, PrenomP = :nvprenom,
                                             Adresse = :nvadresse, CodePostal = :nvcodepostal, Ville = :nvville,
-                                            DateNaissance = :nvdatenaiss, LieuNaissance = :nvlieunaiss, Numero = :nvsecu
+                                            DateNaissance = :nvdatenaiss, LieuNaissance = :nvlieunaiss, Numero = :nvsecu, Id_Medecin=NULL
                                             WHERE Id_Patient = :id'
                                 );
 

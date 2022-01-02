@@ -1,7 +1,11 @@
 <?php
 require 'connexionPDO.php';
 
-//Insertion du nouveau patient
+//Conversion de la date et heure en entier
+
+
+
+
 $req = $linkpdo->prepare('INSERT INTO patient(CiviliteP, NomP,PrenomP,Adresse,CodePostal,Ville,DateNaissance,LieuNaissance,Numero)
 VALUES (:civilite, :nom, :prenom, :adresse, :cp, :ville, :datenaiss, :lieunaiss, :secu)');
 

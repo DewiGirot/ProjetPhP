@@ -40,7 +40,6 @@
 					<label for="cp">Date de naissance (aaaa/mm/jj) :	<input type="text" name="datenaiss" placeholder="AAAA-MM-JJ"/></label>
 					<label for="cp">Lieu de naissance :					<input type="text" name="lieunaiss" placeholder="Nom de ville"/></label>
 					<label for="cp">N° de sécurité sociale :			<input type="text" name="secu" placeholder="Numéro de sécurité sociale"/></label>
-					<label for="cp">Médecin référrent (optionnel) :		<input type="text" name="NomMedecin" placeholder="Nom du médecin référent"/></label>
 					<div class="action_button">
 						<input type="reset" name='annuler' value="Annuler">
 						<input type="submit" name='valider' value="Valider">

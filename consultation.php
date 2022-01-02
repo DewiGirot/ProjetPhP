@@ -25,37 +25,18 @@
 
         <!-- Corps de la page -->
         <section>
-            Nouvelle consultation
-        <?php
-        echo "
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date et heure</th>
-                        <th>Durée</th>
-                        <th>Médecin</th>	
-                        <th>Nom Patient</th>
-                        <th>Prénom Patient</th>
-                    </tr>
-                </thead>";
-        $res = $linkpdo->query('SELECT * FROM consultation,patient,medecin 
-                                WHERE consultation.Id_Patient = patient.Id_Patient
-                                AND medecin.Id_Medecin = consultation.Id_Medecin
-                                ORDER BY consultation.DateEtHeureConsultation');
-        while($data = $res->fetch()){
-                echo "<tr>";
-                echo "<td>" . $data['DateEtHeureConsultation'] . "</td>";
-                echo "<td>" . $data['DureeConsultation'] . "</td>";
-                echo "<td>" . $data['Nom'] . "</td>";
-                echo "<td>" . $data['NomP'] . "</td>";
-                echo "<td>" . $data['PrenomP'] . "</td>";
-                echo "</tr>";
-            }
-        $res->closeCursor();
-
-        echo "</table>";
-        ?>
-
+            
+            <form action="ajoutConsultation.php" method="post">
+            <p>Date (jj/mm/aaaa) : <input type="text" name="Date" /></p>
+            <p>Heure : <input type="text" name="HeureC" /> h <input type="text" name="MinutesC" /></p>
+            <p>Durée : <input type="text" name="HeureD" /> h <input type="text" name="MinutesD" /></p>
+            <p>Médecin : <input type="text" name="NomM" /></p>
+            <p>Nom Patient : <input type="text" name="NomP" /></p>
+            <p>Prénom Patient : <input type="text" name="PrenomP" /></p>
+            <div class="action_button">
+                        <input type="reset" name='annuler' value="Annuler">
+                        <input type="submit" name='valider' value="Valider">
+            </div>
         </section>
 
 
