@@ -2,7 +2,7 @@
 require 'connexionPDO.php';
 
 //Conversion de la date et heure en entier
-$stringDate
+$stringDate=3;
 
 //Récupération id Patient
 $reqIdP = $linkpdo->prepare("SELECT *
@@ -35,9 +35,11 @@ $dureeInt = 60*$nbmin + 3600*$nbh;
 //$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
 //VALUES (:dateHeure, :duree, :idM, :idP)');
 
-//$req -> bindParam(':civilite', $_POST['civilite']);
-//$req -> bindParam(':nom', $_POST['nom']);
-//$req -> bindParam(':prenom', $_POST['prenom']);
+//$req -> bindParam(':dateHeure', $stringDate);
+//$req -> bindParam(':duree', $dureeInt);
+//$req -> bindParam(':idM', $idM);
+//$req -> bindParam(':idP', $idP);
+
 //$req->execute();
 
 //header('Location: ./consultation.php');
