@@ -37,7 +37,7 @@
 					<label> Adresse :			<input type="text" name="adresse" placeholder="Adresse"/></label>
 					<label> Code Postal :			<input type="text" name="cp" placeholder="Code postal"/></label>
 					<label> Ville de résidence :	<input type="text" name="ville" placeholder="Nom de ville"/></label>
-					<label> Date de naissance (aaaa/mm/jj) :	<input type="text" name="datenaiss" placeholder="AAAA-MM-JJ"/></label>
+					<label> Date de naissance :	<input type="date" name="datenaiss" /></label>
 					<label> Lieu de naissance :					<input type="text" name="lieunaiss" placeholder="Nom de ville"/></label>
 					<label> N° de sécurité sociale :			<input type="text" name="secu" placeholder="Numéro de sécurité sociale"/></label>
 					<div class="action_button">
