@@ -31,15 +31,15 @@
             	<fieldset>
 	            	<legend>Inscrire un patient</legend>
 	            	
-	            	<label for="civilite">Civilité :		<input type="text" name="civilite" placeholder="M/Mme/Mlle"/></label>
-					<label for="nom">Nom :					<input type="text" name="nom" placeholder="NOM"/></label>
-					<label for="prenom">Prénom :			<input type="text" name="prenom" placeholder="Prénom"/></label>
-					<label for="adresse">Adresse :			<input type="text" name="adresse" placeholder="Adresse"/></label>
-					<label for="cp">Code Postal :			<input type="text" name="cp" placeholder="Code postal"/></label>
-					<label for="cp">Ville de résidence :	<input type="text" name="ville" placeholder="Nom de ville"/></label>
-					<label for="cp">Date de naissance (aaaa/mm/jj) :	<input type="text" name="datenaiss" placeholder="AAAA-MM-JJ"/></label>
-					<label for="cp">Lieu de naissance :					<input type="text" name="lieunaiss" placeholder="Nom de ville"/></label>
-					<label for="cp">N° de sécurité sociale :			<input type="text" name="secu" placeholder="Numéro de sécurité sociale"/></label>
+	            	<label> Civilité :		<input type="text" name="civilite" placeholder="M/Mme/Mlle"/></label>
+					<label> Nom :					<input type="text" name="nom" placeholder="NOM"/></label>
+					<label> Prénom :			<input type="text" name="prenom" placeholder="Prénom"/></label>
+					<label> Adresse :			<input type="text" name="adresse" placeholder="Adresse"/></label>
+					<label> Code Postal :			<input type="text" name="cp" placeholder="Code postal"/></label>
+					<label> Ville de résidence :	<input type="text" name="ville" placeholder="Nom de ville"/></label>
+					<label> Date de naissance (aaaa/mm/jj) :	<input type="text" name="datenaiss" placeholder="AAAA-MM-JJ"/></label>
+					<label> Lieu de naissance :					<input type="text" name="lieunaiss" placeholder="Nom de ville"/></label>
+					<label> N° de sécurité sociale :			<input type="text" name="secu" placeholder="Numéro de sécurité sociale"/></label>
 					<div class="action_button">
 						<input type="reset" name='annuler' value="Annuler">
 						<input type="submit" name='valider' value="Valider">

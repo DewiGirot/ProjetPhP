@@ -29,9 +29,9 @@
                 <fieldset>
                     <legend for="keyword">Ajouter un médecin</legend>
 
-                    <label for="civilite">Civilité :    <input type="text" name="civilite" placeholder="M/Mme/Mlle"/></label>
-    				<label for="nom">Nom :              <input type="text" name="nom" placeholder="NOM"/></label>
-                    <label for="prenom">Prénom :        <input type="text" name="prenom" placeholder="Prénom"/></label>
+                    <label> Civilité :    <input type="text" name="civilite" placeholder="M/Mme/Mlle"/></label>
+    				<label> Nom :              <input type="text" name="nom" placeholder="NOM"/></label>
+                    <label> Prénom :        <input type="text" name="prenom" placeholder="Prénom"/></label>
     				<div class="action_button">
                         <input type="reset" name='annuler' value="Annuler">
                         <input type="submit" name='valider' value="Valider">
