@@ -30,7 +30,8 @@
                     <legend>Créer une consultation</legend>
 
                     <label> Date :   <input type="date" name="Date" value="2022-02-01" min="2022-02-01" max="2024-01-01"/></label>
-                    <label> Heure de la consultation :     <input type="time" name="HeureC" value="08:00"/></label>
+                    <label> Heures :     <input type="text" name="HeureC" placeholder="15 h"/></label>
+                    <label> Minutes :   <input type="text" name="MinutesC" placeholder="30"/></label>
                     <label> Duree :      <input type="text" name="duree" placeholder="30 min"/></label>
                     <label> Médecin :   <select name="nomM">
                                                         <?php
@@ -78,7 +79,17 @@
             while($data = $res->fetch()){
                     echo "<tr>";
                     echo "<td>" . $data['DateEtHeureConsultation'] . "</td>";
-                    echo "<td>" . $data['DureeConsultation'] . "</td>";
+                    //Conversion 
+                    echo "<td>";
+                        $nbh = $data['DureeConsultation'] / 3600;
+                        settype($nbh, "int");
+                        $nbmin = ($data['DureeConsultation'] % 3600) / 60;
+                        if ($nbmin<10){ 
+                            $tmp = $nbmin;
+                            $nbmin = "0" . $tmp;
+                         }
+                        echo $nbh . "h" . $nbmin;
+                    echo "</td>";
                     echo "<td>" . $data['Nom'] . "</td>";
                     echo "<td>" . $data['NomP'] . "</td>";
                     echo "<td>" . $data['PrenomP'] . "</td>";
