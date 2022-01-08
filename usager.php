@@ -97,7 +97,16 @@
 							echo "<td>" . $data['Adresse'] . "</td>";
 							echo "<td>" . $data['CodePostal'] . "</td>";
 							echo "<td>" . $data['Ville'] . "</td>";
-							echo "<td>" . $data['DateNaissance'] . "</td>";
+							echo "<td>";
+							$date = $data['DateNaissance'];
+   
+							// Création du timestamp à partir du date donnée
+							$timestamp = strtotime($date);
+							 
+							// Créer le nouveau format à partir du timestamp
+							$date = date("d-m-Y", $timestamp);
+							echo $date;
+							echo "</td>";
 							echo "<td>" . $data['LieuNaissance'] . "</td>";
 							echo "<td>" . $data['Numero'] . "</td>";
 
