@@ -79,7 +79,7 @@
             while($data = $res->fetch()){
                     echo "<tr>";
                     echo "<td>" . $data['DateEtHeureConsultation'] . "</td>";
-                    //Conversion 
+                    //Affichage de la durée
                     echo "<td>";
                         $nbh = $data['DureeConsultation'] / 3600;
                         settype($nbh, "int");
@@ -87,8 +87,12 @@
                         if ($nbmin<10){ 
                             $tmp = $nbmin;
                             $nbmin = "0" . $tmp;
-                         }
-                        echo $nbh . "h" . $nbmin;
+                        }
+                        if (!$nbh==0){
+                            echo $nbh . "h" . $nbmin;
+                        }else{
+                            echo $nbmin . "min";
+                        }
                     echo "</td>";
                     echo "<td>" . $data['Nom'] . "</td>";
                     echo "<td>" . $data['NomP'] . "</td>";
