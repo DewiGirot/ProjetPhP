@@ -69,6 +69,7 @@
                                 <th>Prénom Patient</th>
                             </tr>
                         </thead>
+<<<<<<< HEAD
                     <?php
                         $res = $linkpdo->query('SELECT * FROM consultation,patient,medecin 
                                                 WHERE consultation.Id_Patient = patient.Id_Patient
@@ -98,6 +99,40 @@
                                 echo "</tr>";
                             }
                         $res->closeCursor();
+=======
+        <?php
+            $res = $linkpdo->query('SELECT * FROM consultation,patient,medecin 
+                                    WHERE consultation.Id_Patient = patient.Id_Patient
+                                    AND medecin.Id_Medecin = consultation.Id_Medecin
+                                    ORDER BY consultation.DateEtHeureConsultation');
+            while($data = $res->fetch()){
+                    echo "<tr>";
+                    echo "<td>" . $data['DateEtHeureConsultation'] . "</td>";
+                    //Affichage de la durée
+                    echo "<td>";
+                        $nbh = $data['DureeConsultation'] / 3600;
+                        settype($nbh, "int");
+                        $nbmin = ($data['DureeConsultation'] % 3600) / 60;
+                        if ($nbmin<10){ 
+                            $tmp = $nbmin;
+                            $nbmin = "0" . $tmp;
+                        }
+                        if (!$nbh==0){
+                            echo $nbh . "h" . $nbmin;
+                        }else{
+                            echo $nbmin . "min";
+                        }
+                    echo "</td>";
+                    echo "<td>" . $data['Nom'] . "</td>";
+                    echo "<td>" . $data['NomP'] . "</td>";
+                    echo "<td>" . $data['PrenomP'] . "</td>";
+                    echo "</tr>";
+                }
+            $res->closeCursor();
+
+            echo "</table>";
+        ?>
+>>>>>>> parent of 2933ef1 (Date et heure qui marche)
 
                         echo "</table>";
                     ?>
