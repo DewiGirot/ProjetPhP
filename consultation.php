@@ -78,7 +78,7 @@
                                     ORDER BY consultation.DateEtHeureConsultation');
             while($data = $res->fetch()){
                     echo "<tr>";
-                    echo "<td>" . $data['DateEtHeureConsultation'] . "</td>";
+                    echo "<td>" . $data['DateEtHeureConsultation']. "</td>";
                     //Affichage de la durée
                     echo "<td>";
                         $nbh = $data['DureeConsultation'] / 3600;
