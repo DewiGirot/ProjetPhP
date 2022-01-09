@@ -15,8 +15,6 @@ $reqIdP -> execute();
 
 $data = $reqIdP->fetch();
 $idP = $data['Id_Patient'];
-echo "\n";
-echo $idP;
 
 //Récupération id Médecin
 if (!empty($_POST['NomM']) ){
@@ -38,8 +36,6 @@ if (!empty($_POST['NomM']) ){
     $data = $reqIdMed->fetch();
     $idM = $data['Id_Medecin'];
 }
-echo "\n";
-echo $idM;
 
 //Conversion de la durée en entier
 if(!empty($_POST['HeureD'])){
@@ -49,21 +45,19 @@ if(!empty($_POST['HeureD'])){
 }else{
     $dureeInt=1800;
 }
-echo "\n";
-echo $dureeInt;
 
 
-//$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
-//VALUES (:dateHeure, :duree, :idM, :idP)');
+$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
+VALUES (:dateHeure, :duree, :idM, :idP)');
 
-//$req -> bindParam(':dateHeure', $stringDate);
-//$req -> bindParam(':duree', $dureeInt);
-//$req -> bindParam(':idM', $idM);
-//$req -> bindParam(':idP', $idP);
+$req -> bindParam(':dateHeure', $stringDate);
+$req -> bindParam(':duree', $dureeInt);
+$req -> bindParam(':idM', $idM);
+$req -> bindParam(':idP', $idP);
 
-//$req->execute();
+$req->execute();
 
-//header('Location: ./consultation.php');
+header('Location: ./consultation.php');
 
 
 ?>
