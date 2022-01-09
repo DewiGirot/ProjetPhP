@@ -48,7 +48,7 @@ $date->format('d-m-Y H:i');
 
 
 //Duree consultation en minute
-$dureeConsultation = $_POST['duree'];
+$dureeConsultation = $_POST['duree'] *60;
 
 
 //Date et heure consultation en int
@@ -56,10 +56,7 @@ $DateToInt = strtotime($_POST['Date']);
 $HourToInt = $_POST['HeureC'] * 3600;
 $MinuteToInt = $_POST['MinutesC'] * 60;
 
-echo '\n';
-echo $_POST['HeureC'] .'\n'. $HourToInt .'\n';
-
-echo $DateToInt + $HourToInt + $MinuteToInt; // pour 15h30 1643729400
+echo $DateToInt . '.' . $HourToInt . '.' . $MinuteToInt; // pour 15h30 1643729400
 
 //$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
 //VALUES (:dateHeure, :duree, :idM, :idP)');
