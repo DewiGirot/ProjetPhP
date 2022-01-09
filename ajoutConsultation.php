@@ -39,13 +39,13 @@ $dateC = new DateTime($_POST['Date'] . $_POST['HeureC'] . $_POST['MinutesC']);
 $stringDate = $dateC->format('Y-m-d H:i');
 
 //Duree consultation en minute
-$dureeConsultation = $_POST['duree'] *60;
+$dureeConsultation = $_POST['duree'] * 60;
 
 
 $req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
 VALUES (?,?,?,?)');
 
-$req->execute([ $stringDate,  $dureeConsultation, $idM, $idP]);
+$req->execute([ $dateC,  $dureeConsultation, $idM, $idP]);
 
 
 header('Location: ./consultation.php');
