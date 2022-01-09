@@ -1,8 +1,6 @@
 <?php
 require 'connexionPDO.php';
 
-//Conversion de la date et heure en entier
-$stringDate=3;
 
 //Récupération id Patient
 $reqIdP = $linkpdo->prepare("SELECT *
@@ -15,8 +13,6 @@ $reqIdP -> execute();
 
 $data = $reqIdP->fetch();
 $idP = $data['Id_Patient'];
-echo "\n";
-echo $idP;
 
 //Récupération id Médecin
 if (!empty($_POST['NomM']) ){
@@ -38,13 +34,11 @@ if (!empty($_POST['NomM']) ){
     $data = $reqIdMed->fetch();
     $idM = $data['Id_Medecin'];
 }
-echo "\n";
-echo $idM;
 
 
 //On formate la date pour la mettre dans le tableau
 $dateC = new DateTime($_POST['Date'] . $_POST['HeureC'] . $_POST['MinutesC']);
-$dateC->format('d-m-Y H:i');
+$stringDate = $dateC->format('Y-m-d H:i');
 
 
 //Duree consultation en minute
@@ -56,14 +50,12 @@ $DateToInt = strtotime($_POST['Date']);
 $HourToInt = $_POST['HeureC'] * 3600;
 $MinuteToInt = $_POST['MinutesC'] * 60;
 
-echo $DateToInt . '.' . $HourToInt . '.' . $MinuteToInt; // pour 15h30 1643729400
 
 $req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
-VALUES (:dateHeure, :duree, :idM, :idP)');
+VALUES (?,?,?,?)');
 
-$req->execute([ $dateC,  $dureeConsultation, $idM, $idP]);
+$req->execute([ $stringDate,  $dureeConsultation, $idM, $idP]);
 
-$req->execute();
 
 header('Location: ./consultation.php');
 
