@@ -30,8 +30,8 @@
                     <legend>Créer une consultation</legend>
 
                     <label> Date :   <input type="date" name="Date" value="2022-02-01" min="2022-02-01" max="2024-01-01"/></label>
-                    <label> Heure de la consultation :     <input type="text" name="HeureC" placeholder="15 h"/></label>
-                    <label> Minute de la consultation :   <input type="text" name="MinutesC" placeholder="30"/></label>
+                    <label> Heure de la consultation :     <input type="text" name="HeureC" placeholder="xx h"/></label>
+                    <label> Minute de la consultation :   <input type="text" name="MinutesC" placeholder="xx"/></label>
                     <label> Duree :      <input type="text" name="duree" placeholder="30 min"/></label>
                     <label> Médecin :   <select name="nomM">
                                                         <?php
@@ -43,8 +43,8 @@
                                                             $res->closeCursor();
                                                         ?>
                                                     </select></label>                   
-                    <label>Nom du patient :  <input type="text" name="NomP" placeholder="Lassalle"/></label>
-                    <label>Prénom du patient :  <input type="text" name="PrenomP" placeholder="Jean"/></label>
+                    <label>Nom du patient :  <input type="text" name="NomP" placeholder="Nom"/></label>
+                    <label>Prénom du patient :  <input type="text" name="PrenomP" placeholder="Prénom"/></label>
  
                     <div class="action_button">
                         <input type="reset" name='annuler' value="Annuler">
@@ -75,7 +75,7 @@
             $res = $linkpdo->query('SELECT * FROM consultation,patient,medecin 
                                     WHERE consultation.Id_Patient = patient.Id_Patient
                                     AND medecin.Id_Medecin = consultation.Id_Medecin
-                                    ORDER BY consultation.DateEtHeureConsultation');
+                                    ORDER BY consultation.DateEtHeureConsultation DESC');
             while($data = $res->fetch()){
                     echo "<tr>";
                     echo "<td>" . $data['DateEtHeureConsultation']. "</td>";
