@@ -15,25 +15,15 @@ $data = $reqIdP->fetch();
 $idP = $data['Id_Patient'];
 
 //Récupération id Médecin
-if (!empty($_POST['NomM']) ){
-    $reqIdM = $linkpdo->prepare("SELECT *
-                                FROM medecin
-                                WHERE Nom = :nomM");
-    $reqIdM -> bindParam(':nomM', $_POST['NomM']);
-    $reqIdM -> execute();
-    
-    $data = $reqIdM->fetch();
-    $idM = $data['Id_Medecin'];
-}else{
-    $reqIdMed = $linkpdo->prepare("SELECT *
-                                FROM patient
-                                WHERE Id_Patient = :idP");
-    $reqIdMed -> bindParam(':idP', $idP);
-    $reqIdMed -> execute();
-    
-    $data = $reqIdMed->fetch();
-    $idM = $data['Id_Medecin'];
-}
+$reqIdMed = $linkpdo->prepare("SELECT *
+                            FROM medecin
+                            WHERE Nom = :nom");
+$reqIdMed -> bindParam(':nom', $_POST['nomM']);
+$reqIdMed -> execute();
+
+$data = $reqIdMed->fetch();
+$idM = $data['Id_Medecin'];
+
 
 
 //On formate la date pour la mettre dans le tableau
@@ -43,12 +33,6 @@ $stringDate = $dateC->format('Y-m-d H:i');
 
 //Duree consultation en minute
 $dureeConsultation = $_POST['duree'] * 60;
-
-
-//Date et heure consultation en int
-$DateToInt = strtotime($_POST['Date']);
-$HourToInt = $_POST['HeureC'] * 3600;
-$MinuteToInt = $_POST['MinutesC'] * 60;
 
 
 $req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)

@@ -1,5 +1,3 @@
-
-
 <?php
 
 require 'connexionPDO.php';
@@ -81,9 +79,11 @@ if($data=$resID->fetch()){
                                 'nvmedecin' => $nomM,
                                 'id' => $_POST['id']
                                 ));
+                                
+                                header('Location: usager.php');
+    exit();
 
-            header('Location: ./usager.php');
-            exit();
+
     }
 
     // Mise a jour du patient sans médecin
@@ -111,10 +111,14 @@ if($data=$resID->fetch()){
                                 'nvsecu' => $_POST['nvsecu'],
                                 'id' => $_POST['id']
                                 ));
+                                
+                                header('Location: usager.php');
+    exit();
 
-            header('Location: ./usager.php');
-            exit();
+
+            
     }
-
+    
+    
     
 ?>

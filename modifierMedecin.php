@@ -9,7 +9,7 @@
     while($data = $res->fetch()){
         if ($data['Id_Medecin'] == $_GET['id']){
            ?>
-            <form method="post" action='modifierMedecin.php?id=" . $data['Id_Medecin'] . "'>
+            <form method="post" >
                 <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
                 <label for="civilite">Civilité</label>            <input type="text" name="nvcivilite" id="civilite" value="<?php echo $data['Civilite'];?>"/><br />
                 <label for="name">Nom</label>            <input type="text" name="nvname" id="name" value="<?php echo $data['Nom'];?>"/><br />
@@ -40,5 +40,6 @@
                                 ));
 
             header('Location: ./medecin.php');
+            exit();
     }
 ?>
