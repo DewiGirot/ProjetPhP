@@ -38,10 +38,8 @@ if (!empty($_POST['NomM']) ){
 }
 
 //Conversion de la durée en entier
-if(!empty($_POST['HeureD'])){
-    $nbh = $_POST['HeureD'];
-    $nbmin = $_POST['MinutesD'];
-    $dureeInt = 60*$nbmin + 3600*$nbh;
+if(!empty($_POST['duree'])){
+    $dureeInt = $_POST['duree'] * 60;
 }else{
     $dureeInt=1800;
 }

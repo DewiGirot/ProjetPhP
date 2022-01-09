@@ -32,7 +32,7 @@ if($data=$resID->fetch()){
                 <label for="datenaiss">Date de naissance</label>  <input type="text" name="nvdatenaiss" id="datenaiss" value="<?php echo $data['DateNaissance'];?>"/><br />
                 <label for="lieunaiss">Lieu de naissance</label>  <input type="text" name="nvlieunaiss" id="lieunaiss" value="<?php echo $data['LieuNaissance'];?>"/><br />
                 <label for="secu">Sécurité Sociale</label>  <input type="text" name="nvsecu" id="secu" value="<?php echo $data['Numero'];?>"/><br />
-                <label for="secu">Médecin référent (optionnel)</label>  <input type="text" name="nvmedecin" id="medecin" value="<?php echo $nomM;?>"/><br />
+                <label for="secu">Médecin référent</label>  <input type="text" name="nvmedecin" id="medecin" value="<?php echo $nomM;?>"/><br />
 
                 <input type="reset" value="Annuler"/>
                 <input type="submit" value="Valider"/>
