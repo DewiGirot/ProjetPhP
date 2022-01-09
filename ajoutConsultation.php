@@ -44,7 +44,6 @@ echo $idM;
 //Conversion de la durée en entier
 if(!empty($_POST['HeureD'])){
     $nbh = $_POST['HeureD'];
-    $nbmin = $_POST['MinutesD'];
     $dureeInt = 60*$nbmin + 3600*$nbh;
 }else{
     $dureeInt=1800;
@@ -52,6 +51,20 @@ if(!empty($_POST['HeureD'])){
 echo "\n";
 echo $dureeInt;
 
+//On formate la date pour la mettre dans le tableau
+$date = new DateTime($_POST['Date'] . $_POST['HeureC'] . $_POST['MinutesC']);
+$date->format('d-m-Y H:i');
+
+
+//Duree consultation
+$dureeConsultation = $_POST['duree'];
+$date->format('Y-m-d H:i');
+
+//Date et heure consultation en int
+$DateToInt = strtotime($_POST['Date']);
+$HourToInt = strtotime($_POST['HeureC']);
+$MinuteToInt = strtotime($_POST['MinutesC']);
+echo $DateToInt + $HourToInt + $MinuteToInt; //1643673600
 
 //$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
 //VALUES (:dateHeure, :duree, :idM, :idP)');
