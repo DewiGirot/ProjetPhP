@@ -69,6 +69,7 @@
                                 <th>Médecin</th>	
                                 <th>Nom Patient</th>
                                 <th>Prénom Patient</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
         <?php
@@ -97,6 +98,8 @@
                     echo "<td>" . $data['Nom'] . "</td>";
                     echo "<td>" . $data['NomP'] . "</td>";
                     echo "<td>" . $data['PrenomP'] . "</td>";
+                    echo "<td><a href='modifierConsultation.php?id=" . $data['DateEtHeureConsultation'] . "'>Modifier</a> ";
+					echo "<a href='supprimerConsultation.php?id=" . $data['DateEtHeureConsultation'] . "'>Supprimer</a></td>";
                     echo "</tr>";
                 }
             $res->closeCursor();
