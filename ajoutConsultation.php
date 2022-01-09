@@ -43,8 +43,8 @@ echo $idM;
 
 
 //On formate la date pour la mettre dans le tableau
-$date = new DateTime($_POST['Date'] . $_POST['HeureC'] . $_POST['MinutesC']);
-$date->format('d-m-Y H:i');
+$dateC = new DateTime($_POST['Date'] . $_POST['HeureC'] . $_POST['MinutesC']);
+$dateC->format('d-m-Y H:i');
 
 
 //Duree consultation en minute
@@ -58,21 +58,14 @@ $MinuteToInt = $_POST['MinutesC'] * 60;
 
 echo $DateToInt . '.' . $HourToInt . '.' . $MinuteToInt; // pour 15h30 1643729400
 
-//$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
-//VALUES (:dateHeure, :duree, :idM, :idP)');
+$req = $linkpdo->prepare('INSERT INTO consultation(DateEtHeureConsultation, DureeConsultation, Id_Medecin, Id_Patient)
+VALUES (:dateHeure, :duree, :idM, :idP)');
 
-<<<<<<< HEAD
 $req->execute([ $dateC,  $dureeConsultation, $idM, $idP]);
-=======
-//$req -> bindParam(':dateHeure', $stringDate);
-//$req -> bindParam(':duree', $dureeInt);
-//$req -> bindParam(':idM', $idM);
-//$req -> bindParam(':idP', $idP);
->>>>>>> parent of 2933ef1 (Date et heure qui marche)
 
-//$req->execute();
+$req->execute();
 
-//header('Location: ./consultation.php');
+header('Location: ./consultation.php');
 
 
 ?>
